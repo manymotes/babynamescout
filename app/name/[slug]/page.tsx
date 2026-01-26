@@ -3,6 +3,8 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getAllNames, getNameBySlug, getNamesByOrigin, getNamesByGender } from '@/lib/data'
 import { NameGrid } from '@/components/NameCard'
+import AdSense from '@/components/AdSense'
+import { getNameContent } from '@/lib/name-content'
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -44,10 +46,13 @@ export default async function NamePage({ params }: PageProps) {
   const genderLabel = name.gender === 'girl' ? 'Girl' : name.gender === 'boy' ? 'Boy' : 'Unisex'
   const relatedByOrigin = getNamesByOrigin(name.origin)
     .filter(n => n.slug !== name.slug)
+    .filter((n, i, arr) => arr.findIndex(x => x.name === n.name) === i) // Deduplicate by name
     .slice(0, 8)
   const relatedByGender = getNamesByGender(name.gender)
     .filter(n => n.slug !== name.slug && n.name[0] === name.name[0])
+    .filter((n, i, arr) => arr.findIndex(x => x.name === n.name) === i) // Deduplicate by name
     .slice(0, 4)
+  const nameContent = getNameContent(name.slug)
 
   const colorClasses = {
     girl: { bg: 'bg-primary-500', light: 'bg-primary-50', text: 'text-primary-600', border: 'border-primary-200' },
@@ -265,6 +270,11 @@ export default async function NamePage({ params }: PageProps) {
           </div>
         </div>
 
+        {/* Ad Zone 1 - After Main Content */}
+        <div className="my-8">
+          <AdSense adSlot="1234567890" adFormat="auto" className="text-center" />
+        </div>
+
         {/* Similar Names by Starting Letter */}
         {relatedByGender.length > 0 && (
           <section className="mb-12">
@@ -294,7 +304,7 @@ export default async function NamePage({ params }: PageProps) {
         )}
 
         {/* SEO Content */}
-        <section className="bg-gray-50 rounded-xl p-8">
+        <section className="bg-gray-50 rounded-xl p-8 mb-8">
           <h2 className="text-xl font-bold text-gray-900 mb-4">About the Name {name.name}</h2>
           <div className="prose prose-gray max-w-none">
             <p className="text-gray-600 mb-4">
@@ -303,9 +313,92 @@ export default async function NamePage({ params }: PageProps) {
               {' '}among parents looking for {name.gender === 'girl' ? 'a name for their daughter' : name.gender === 'boy' ? 'a name for their son' : 'a gender-neutral option'}.
             </p>
             <p className="text-gray-600">
-              The name {name.name} carries a rich heritage from {name.origin} tradition.
-              {name.popularity && ` Currently ranked #${name.popularity} in the United States, it remains a beloved choice for new parents.`}
+              {nameContent.history}
             </p>
+          </div>
+        </section>
+
+        {/* Personality Section */}
+        <section className="bg-white border border-gray-200 rounded-xl p-8 mb-8">
+          <h2 className="text-xl font-bold text-gray-900 mb-4">Personality Traits Associated with {name.name}</h2>
+          <p className="text-gray-600">{nameContent.personality}</p>
+        </section>
+
+        {/* Famous People */}
+        {nameContent.famousPeople.length > 0 && (
+          <section className="bg-white border border-gray-200 rounded-xl p-8 mb-8">
+            <h2 className="text-xl font-bold text-gray-900 mb-4">Famous People Named {name.name}</h2>
+            <ul className="space-y-2">
+              {nameContent.famousPeople.map((person, index) => (
+                <li key={index} className="text-gray-600 flex items-start gap-2">
+                  <span className="text-primary-600">•</span>
+                  {person}
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        {/* Nicknames */}
+        {nameContent.nicknames.length > 0 && (
+          <section className="bg-white border border-gray-200 rounded-xl p-8 mb-8">
+            <h2 className="text-xl font-bold text-gray-900 mb-4">Nicknames for {name.name}</h2>
+            <div className="flex flex-wrap gap-2">
+              {nameContent.nicknames.map((nickname, index) => (
+                <span key={index} className={`px-3 py-1 ${colors.light} ${colors.text} rounded-full text-sm font-medium`}>
+                  {nickname}
+                </span>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Cultural Significance */}
+        <section className="bg-white border border-gray-200 rounded-xl p-8 mb-8">
+          <h2 className="text-xl font-bold text-gray-900 mb-4">Cultural Significance of {name.name}</h2>
+          <p className="text-gray-600">{nameContent.culturalSignificance}</p>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="mb-8">
+          <h2 className="text-xl font-bold text-gray-900 mb-6">Frequently Asked Questions About {name.name}</h2>
+          <div className="space-y-4">
+            <div className="bg-white border border-gray-200 rounded-xl p-6">
+              <h3 className="font-semibold text-gray-900 mb-2">What does the name {name.name} mean?</h3>
+              <p className="text-gray-600">
+                The name {name.name} means &ldquo;{name.meaning}&rdquo;. It is of {name.origin} origin and is traditionally
+                used as a {genderLabel.toLowerCase()} name.
+              </p>
+            </div>
+
+            <div className="bg-white border border-gray-200 rounded-xl p-6">
+              <h3 className="font-semibold text-gray-900 mb-2">How popular is the name {name.name}?</h3>
+              <p className="text-gray-600">
+                {name.popularity
+                  ? `${name.name} is ranked #${name.popularity} in popularity for ${genderLabel.toLowerCase()} names in the United States. ${name.popularity <= 10 ? 'It is one of the most popular names currently.' : name.popularity <= 50 ? 'It remains a very popular choice for parents.' : name.popularity <= 100 ? 'It is a moderately popular name.' : 'It is a less common but distinctive choice.'}`
+                  : `${name.name} is a unique name that stands out from more common choices. Its rarity makes it a distinctive option for parents seeking something special.`
+                }
+              </p>
+            </div>
+
+            <div className="bg-white border border-gray-200 rounded-xl p-6">
+              <h3 className="font-semibold text-gray-900 mb-2">Is {name.name} a boy or girl name?</h3>
+              <p className="text-gray-600">
+                {name.gender === 'unisex'
+                  ? `${name.name} is a unisex name, meaning it is used for both boys and girls. It's a great choice for parents who prefer gender-neutral options.`
+                  : `${name.name} is traditionally a ${genderLabel.toLowerCase()} name. While names can be used for any gender, ${name.name} is most commonly given to ${genderLabel.toLowerCase()}s.`
+                }
+              </p>
+            </div>
+
+            {nameContent.nicknames.length > 0 && (
+              <div className="bg-white border border-gray-200 rounded-xl p-6">
+                <h3 className="font-semibold text-gray-900 mb-2">What are common nicknames for {name.name}?</h3>
+                <p className="text-gray-600">
+                  Common nicknames for {name.name} include {nameContent.nicknames.slice(0, 3).join(', ')}{nameContent.nicknames.length > 3 ? `, and ${nameContent.nicknames[3]}` : ''}. These shortened forms provide casual alternatives while maintaining the essence of the full name.
+                </p>
+              </div>
+            )}
           </div>
         </section>
       </div>

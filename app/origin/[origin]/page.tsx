@@ -50,6 +50,34 @@ export default async function OriginPage({ params }: PageProps) {
   const boyNames = names.filter(n => n.gender === 'boy')
   const unisexNames = names.filter(n => n.gender === 'unisex')
 
+  const websiteUrl = 'https://babynamescout.com'
+
+  // BreadcrumbList Schema
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: websiteUrl
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Origins',
+        item: `${websiteUrl}/origins/`
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: origin.name,
+        item: `${websiteUrl}/origin/${origin.slug}/`
+      }
+    ]
+  }
+
   // FAQ Schema
   const faqSchema = {
     '@context': 'https://schema.org',
@@ -76,6 +104,10 @@ export default async function OriginPage({ params }: PageProps) {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}

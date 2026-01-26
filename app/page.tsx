@@ -1,6 +1,32 @@
 import Link from 'next/link'
 import { getAllNames, getNamesByGender, getOrigins } from '@/lib/data'
 
+const websiteUrl = 'https://babynamescout.com'
+
+// WebSite Schema
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'BabyNameScout',
+  description: 'Find the perfect baby name with meanings, origins, and popularity trends',
+  url: websiteUrl,
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: `${websiteUrl}/search?q={search_term_string}`,
+    'query-input': 'required name=search_term_string',
+  },
+}
+
+// Organization Schema
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'BabyNameScout',
+  url: websiteUrl,
+  description: 'Find the perfect baby name with meanings, origins, and popularity trends. Browse thousands of names from various cultures and origins.',
+  sameAs: [],
+}
+
 export default function HomePage() {
   const allNames = getAllNames()
   const girlNames = getNamesByGender('girl')
@@ -9,8 +35,17 @@ export default function HomePage() {
   const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-12">
-      {/* Hero Section */}
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <div className="max-w-6xl mx-auto px-4 py-12">
+        {/* Hero Section */}
       <section className="text-center mb-16">
         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
           Find the Perfect Baby Name
@@ -160,5 +195,6 @@ export default function HomePage() {
         </div>
       </section>
     </div>
+    </>
   )
 }

@@ -49,7 +49,68 @@ export default async function MeaningPage({ params }: PageProps) {
   const girlNames = names.filter(n => n.gender === 'girl')
   const boyNames = names.filter(n => n.gender === 'boy')
 
+  const websiteUrl = 'https://babynamescout.com'
+
+  // BreadcrumbList Schema
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: websiteUrl
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Meanings',
+        item: `${websiteUrl}/meanings/`
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: category.name,
+        item: `${websiteUrl}/meaning/${category.slug}/`
+      }
+    ]
+  }
+
+  // FAQ Schema
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: `What baby names mean ${category.name.toLowerCase()}?`,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: `Popular baby names meaning ${category.name.toLowerCase()} include ${names.slice(0, 5).map(n => n.name).join(', ')}.`
+        }
+      },
+      {
+        '@type': 'Question',
+        name: `How many baby names mean ${category.name.toLowerCase()}?`,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: `Our database includes ${names.length} baby names that mean ${category.name.toLowerCase()} or have similar meanings.`
+        }
+      }
+    ]
+  }
+
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
     <div className="max-w-6xl mx-auto px-4 py-12">
       {/* Breadcrumb */}
       <nav className="text-sm mb-8">
@@ -114,5 +175,6 @@ export default async function MeaningPage({ params }: PageProps) {
         </div>
       </section>
     </div>
+    </>
   )
 }
