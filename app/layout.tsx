@@ -13,10 +13,14 @@ export const metadata: Metadata = {
   keywords: ['baby names', 'girl names', 'boy names', 'name meanings', 'baby name scout', 'unique names'],
   authors: [{ name: 'BabyNameScout' }],
   metadataBase: new URL('https://babynamescout.com'),
+  alternates: {
+    canonical: 'https://babynamescout.com',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
     siteName: 'BabyNameScout',
+    images: ['/og-image.png'],
   },
   twitter: {
     card: 'summary_large_image',
@@ -26,9 +30,12 @@ export const metadata: Metadata = {
     follow: true,
   },
   verification: {
-    // Google Search Console verification - will be added after deployment
-    // Site needs to be live before Google can generate verification code
-    google: '',
+    // AdSense verification code - get from https://adsense.google.com → Sites → babynamescout.com
+    // Copy the content value from the meta tag: <meta name="google-adsense-verification" content="CODE_HERE" />
+    google: process.env.NEXT_PUBLIC_ADSENSE_VERIFICATION || '',
+  },
+  other: {
+    'google-adsense-account': 'ca-pub-6061225328031066',
   },
 }
 
