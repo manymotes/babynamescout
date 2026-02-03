@@ -24,6 +24,9 @@ export function Header() {
             <Link href="/names/boy/" className="text-gray-600 hover:text-secondary-600 font-medium">
               Boy Names
             </Link>
+            <Link href="/compare/" className="text-gray-600 hover:text-purple-600 font-medium">
+              Compare
+            </Link>
             <Link href="/origins/" className="text-gray-600 hover:text-gray-900 font-medium">
               By Origin
             </Link>
@@ -104,6 +107,9 @@ export function Header() {
               </Link>
               <Link href="/names/boy/" className="text-gray-600 hover:text-secondary-600 font-medium">
                 Boy Names
+              </Link>
+              <Link href="/compare/" className="text-gray-600 hover:text-purple-600 font-medium">
+                Compare Names
               </Link>
               <Link href="/origins/" className="text-gray-600 hover:text-gray-900 font-medium">
                 By Origin

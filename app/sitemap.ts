@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
 import { getAllNames, getOriginData, getMeaningCategories, getAvailableLetters } from '@/lib/data'
+import { getAllComparisons } from '@/lib/comparisons-data'
 
 export const dynamic = 'force-static'
 
@@ -9,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const names = getAllNames()
   const origins = getOriginData().filter(o => o.count > 0)
   const meanings = getMeaningCategories().filter(m => m.count > 0)
+  const comparisons = getAllComparisons()
 
   const genders: ('girl' | 'boy' | 'unisex')[] = ['girl', 'boy', 'unisex']
 
@@ -144,6 +146,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }))
 
+  // Comparison pages
+  const comparisonLandingPage: MetadataRoute.Sitemap = [
+    {
+      url: `${SITE_URL}/compare/`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    }
+  ]
+
+  const comparisonPages: MetadataRoute.Sitemap = comparisons.map(comparison => ({
+    url: `${SITE_URL}/compare/${comparison.comparisonSlug}/`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }))
+
   return [
     ...staticPages,
     ...categoryPages,
@@ -152,5 +171,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...namePages,
     ...originPages,
     ...meaningPages,
+    ...comparisonLandingPage,
+    ...comparisonPages,
   ]
 }
