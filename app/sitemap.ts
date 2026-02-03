@@ -146,6 +146,46 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }))
 
+  // Featured meaning collection pages
+  const meaningCollectionPages: MetadataRoute.Sitemap = [
+    {
+      url: `${SITE_URL}/meanings/nature-names/`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/meanings/strong-names/`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/meanings/beautiful-names/`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/meanings/wise-names/`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/meanings/royal-names/`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/meanings/happy-names/`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+  ]
+
   // Comparison pages
   const comparisonLandingPage: MetadataRoute.Sitemap = [
     {
@@ -171,6 +211,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...namePages,
     ...originPages,
     ...meaningPages,
+    ...meaningCollectionPages,
     ...comparisonLandingPage,
     ...comparisonPages,
   ]
