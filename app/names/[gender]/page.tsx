@@ -47,13 +47,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const config = genderConfig[gender as Gender]
+  const canonicalUrl = `https://babynamescout.com/names/${gender}/`
 
   return {
     title: `${config.title} - Beautiful Baby Names with Meanings`,
     description: config.description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
-      title: `${config.title} | BabyNameFinder`,
+      title: `${config.title} | BabyNameScout`,
       description: config.description,
+      url: canonicalUrl,
     }
   }
 }

@@ -1,0 +1,23 @@
+# Redirect all traffic to HTTPS non-www version
+http://:project.pages.dev/*
+  Location: https://:project.pages.dev/:splat
+  Status: 301
+
+http://babynamescout.com/*
+  Location: https://babynamescout.com/:splat
+  Status: 301
+
+http://www.babynamescout.com/*
+  Location: https://babynamescout.com/:splat
+  Status: 301
+
+https://www.babynamescout.com/*
+  Location: https://babynamescout.com/:splat
+  Status: 301
+
+# Security headers for all pages
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin

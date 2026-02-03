@@ -53,19 +53,31 @@ export default function BabyProductsPage() {
 
               {/* Graco SnugRide */}
               <div className="border-b border-gray-200 pb-6">
-                <div className="flex items-start justify-between mb-3">
-                  <h3 className="text-xl font-bold text-gray-900">
-                    Graco SnugRide SnugFit 35 Infant Car Seat
-                  </h3>
-                  <div className="text-right">
-                    <div className="text-yellow-500">★★★★★</div>
-                    <div className="text-gray-600 text-sm">4.8/5</div>
+                <div className="grid md:grid-cols-4 gap-4 mb-4">
+                  <div className="md:col-span-1">
+                    <div className="bg-gradient-to-br from-red-100 to-red-200 rounded-lg p-8 border-2 border-red-300 flex items-center justify-center" style={{minHeight: '200px'}}>
+                      <div className="text-center">
+                        <div className="text-7xl mb-2">🚗</div>
+                        <div className="text-sm font-semibold text-red-900">Infant Car Seat</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="md:col-span-3">
+                    <div className="flex items-start justify-between mb-3">
+                      <h3 className="text-xl font-bold text-gray-900">
+                        Graco SnugRide SnugFit 35 Infant Car Seat
+                      </h3>
+                      <div className="text-right">
+                        <div className="text-yellow-500">★★★★★</div>
+                        <div className="text-gray-600 text-sm">4.8/5</div>
+                      </div>
+                    </div>
+                    <p className="text-gray-700 mb-3">
+                      Top-rated infant car seat with advanced safety features. Fits babies from 4-35 pounds and includes
+                      Stay-in-Car base for easy transfers. Compatible with most strollers.
+                    </p>
                   </div>
                 </div>
-                <p className="text-gray-700 mb-3">
-                  Top-rated infant car seat with advanced safety features. Fits babies from 4-35 pounds and includes
-                  Stay-in-Car base for easy transfers. Compatible with most strollers.
-                </p>
                 <div className="grid md:grid-cols-2 gap-4 mb-4">
                   <div>
                     <h4 className="font-semibold text-gray-900 text-sm mb-2">Safety Features:</h4>
@@ -120,19 +132,31 @@ export default function BabyProductsPage() {
 
               {/* Baby Jogger City Mini */}
               <div className="border-b border-gray-200 pb-6">
-                <div className="flex items-start justify-between mb-3">
-                  <h3 className="text-xl font-bold text-gray-900">
-                    Baby Jogger City Mini GT2 Stroller
-                  </h3>
-                  <div className="text-right">
-                    <div className="text-yellow-500">★★★★★</div>
-                    <div className="text-gray-600 text-sm">4.7/5</div>
+                <div className="grid md:grid-cols-4 gap-4 mb-4">
+                  <div className="md:col-span-1">
+                    <div className="bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg p-8 border-2 border-blue-300 flex items-center justify-center" style={{minHeight: '200px'}}>
+                      <div className="text-center">
+                        <div className="text-7xl mb-2">🚶</div>
+                        <div className="text-sm font-semibold text-blue-900">Baby Stroller</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="md:col-span-3">
+                    <div className="flex items-start justify-between mb-3">
+                      <h3 className="text-xl font-bold text-gray-900">
+                        Baby Jogger City Mini GT2 Stroller
+                      </h3>
+                      <div className="text-right">
+                        <div className="text-yellow-500">★★★★★</div>
+                        <div className="text-gray-600 text-sm">4.7/5</div>
+                      </div>
+                    </div>
+                    <p className="text-gray-700 mb-3">
+                      Lightweight, all-terrain stroller that's easy to fold and maneuver. Works from birth with car seat
+                      adapter or from 6 months with regular seat. Perfect for city streets and parks.
+                    </p>
                   </div>
                 </div>
-                <p className="text-gray-700 mb-3">
-                  Lightweight, all-terrain stroller that's easy to fold and maneuver. Works from birth with car seat
-                  adapter or from 6 months with regular seat. Perfect for city streets and parks.
-                </p>
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
                   <p className="text-sm text-gray-700 mb-3">
                     <strong>Price:</strong> $350-450 | <strong>Weight:</strong> 22 lbs | <strong>Max child weight:</strong> 65 lbs
@@ -167,19 +191,31 @@ export default function BabyProductsPage() {
 
               {/* Graco Benton Convertible Crib */}
               <div className="border-b border-gray-200 pb-6">
-                <div className="flex items-start justify-between mb-3">
-                  <h3 className="text-xl font-bold text-gray-900">
-                    Graco Benton 4-in-1 Convertible Crib
-                  </h3>
-                  <div className="text-right">
-                    <div className="text-yellow-500">★★★★★</div>
-                    <div className="text-gray-600 text-sm">4.6/5</div>
+                <div className="grid md:grid-cols-4 gap-4 mb-4">
+                  <div className="md:col-span-1">
+                    <div className="bg-gradient-to-br from-purple-100 to-purple-200 rounded-lg p-8 border-2 border-purple-300 flex items-center justify-center" style={{minHeight: '200px'}}>
+                      <div className="text-center">
+                        <div className="text-7xl mb-2">🛏️</div>
+                        <div className="text-sm font-semibold text-purple-900">Baby Crib</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="md:col-span-3">
+                    <div className="flex items-start justify-between mb-3">
+                      <h3 className="text-xl font-bold text-gray-900">
+                        Graco Benton 4-in-1 Convertible Crib
+                      </h3>
+                      <div className="text-right">
+                        <div className="text-yellow-500">★★★★★</div>
+                        <div className="text-gray-600 text-sm">4.6/5</div>
+                      </div>
+                    </div>
+                    <p className="text-gray-700 mb-3">
+                      Solid, affordable crib that converts to toddler bed, daybed, and full-size bed with headboard.
+                      JPMA certified and meets all safety standards. Classic design fits any nursery style.
+                    </p>
                   </div>
                 </div>
-                <p className="text-gray-700 mb-3">
-                  Solid, affordable crib that converts to toddler bed, daybed, and full-size bed with headboard.
-                  JPMA certified and meets all safety standards. Classic design fits any nursery style.
-                </p>
                 <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
                   <p className="text-sm text-gray-700 mb-3">
                     <strong>Price:</strong> $180-250 | <strong>Converts:</strong> Crib → Toddler Bed → Daybed → Full Bed
@@ -197,19 +233,31 @@ export default function BabyProductsPage() {
 
               {/* Crib Mattress */}
               <div className="border-b border-gray-200 pb-6">
-                <div className="flex items-start justify-between mb-3">
-                  <h3 className="text-xl font-bold text-gray-900">
-                    Newton Baby Crib Mattress
-                  </h3>
-                  <div className="text-right">
-                    <div className="text-yellow-500">★★★★★</div>
-                    <div className="text-gray-600 text-sm">4.8/5</div>
+                <div className="grid md:grid-cols-4 gap-4 mb-4">
+                  <div className="md:col-span-1">
+                    <div className="bg-gradient-to-br from-purple-100 to-purple-200 rounded-lg p-8 border-2 border-purple-300 flex items-center justify-center" style={{minHeight: '200px'}}>
+                      <div className="text-center">
+                        <div className="text-7xl mb-2">🛌</div>
+                        <div className="text-sm font-semibold text-purple-900">Mattress</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="md:col-span-3">
+                    <div className="flex items-start justify-between mb-3">
+                      <h3 className="text-xl font-bold text-gray-900">
+                        Newton Baby Crib Mattress
+                      </h3>
+                      <div className="text-right">
+                        <div className="text-yellow-500">★★★★★</div>
+                        <div className="text-gray-600 text-sm">4.8/5</div>
+                      </div>
+                    </div>
+                    <p className="text-gray-700 mb-3">
+                      100% breathable, washable crib mattress that's safer than traditional foam or spring mattresses.
+                      Hypoallergenic, non-toxic, and proven to reduce suffocation risk.
+                    </p>
                   </div>
                 </div>
-                <p className="text-gray-700 mb-3">
-                  100% breathable, washable crib mattress that's safer than traditional foam or spring mattresses.
-                  Hypoallergenic, non-toxic, and proven to reduce suffocation risk.
-                </p>
                 <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
                   <p className="text-sm text-gray-700 mb-3">
                     <strong>Price:</strong> $299-350 | <strong>Why it's worth it:</strong> Breathable design = safer sleep
@@ -244,19 +292,31 @@ export default function BabyProductsPage() {
 
               {/* Infant Optics Video Monitor */}
               <div className="border-b border-gray-200 pb-6">
-                <div className="flex items-start justify-between mb-3">
-                  <h3 className="text-xl font-bold text-gray-900">
-                    Infant Optics DXR-8 PRO Video Baby Monitor
-                  </h3>
-                  <div className="text-right">
-                    <div className="text-yellow-500">★★★★★</div>
-                    <div className="text-gray-600 text-sm">4.5/5</div>
+                <div className="grid md:grid-cols-4 gap-4 mb-4">
+                  <div className="md:col-span-1">
+                    <div className="bg-gradient-to-br from-green-100 to-green-200 rounded-lg p-8 border-2 border-green-300 flex items-center justify-center" style={{minHeight: '200px'}}>
+                      <div className="text-center">
+                        <div className="text-7xl mb-2">📹</div>
+                        <div className="text-sm font-semibold text-green-900">Baby Monitor</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="md:col-span-3">
+                    <div className="flex items-start justify-between mb-3">
+                      <h3 className="text-xl font-bold text-gray-900">
+                        Infant Optics DXR-8 PRO Video Baby Monitor
+                      </h3>
+                      <div className="text-right">
+                        <div className="text-yellow-500">★★★★★</div>
+                        <div className="text-gray-600 text-sm">4.5/5</div>
+                      </div>
+                    </div>
+                    <p className="text-gray-700 mb-3">
+                      The #1 bestselling baby monitor on Amazon. Crystal-clear video, two-way talk, room temperature display,
+                      and long battery life. No WiFi needed = more secure and reliable.
+                    </p>
                   </div>
                 </div>
-                <p className="text-gray-700 mb-3">
-                  The #1 bestselling baby monitor on Amazon. Crystal-clear video, two-way talk, room temperature display,
-                  and long battery life. No WiFi needed = more secure and reliable.
-                </p>
                 <div className="bg-green-50 border border-green-200 rounded-lg p-4">
                   <p className="text-sm text-gray-700 mb-3">
                     <strong>Price:</strong> $180-200 | <strong>Range:</strong> 700 feet
@@ -291,13 +351,25 @@ export default function BabyProductsPage() {
 
               {/* Diapers */}
               <div className="border-b border-gray-200 pb-6">
-                <div className="flex items-start justify-between mb-3">
-                  <h3 className="text-xl font-bold text-gray-900">
-                    Pampers Swaddlers Diapers
-                  </h3>
-                  <div className="text-right">
-                    <div className="text-yellow-500">★★★★★</div>
-                    <div className="text-gray-600 text-sm">4.8/5</div>
+                <div className="grid md:grid-cols-4 gap-4 mb-4">
+                  <div className="md:col-span-1">
+                    <div className="bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-lg p-8 border-2 border-yellow-300 flex items-center justify-center" style={{minHeight: '200px'}}>
+                      <div className="text-center">
+                        <div className="text-7xl mb-2">🍼</div>
+                        <div className="text-sm font-semibold text-yellow-900">Diapers</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="md:col-span-3">
+                    <div className="flex items-start justify-between mb-3">
+                      <h3 className="text-xl font-bold text-gray-900">
+                        Pampers Swaddlers Diapers
+                      </h3>
+                      <div className="text-right">
+                        <div className="text-yellow-500">★★★★★</div>
+                        <div className="text-gray-600 text-sm">4.8/5</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <p className="text-gray-700 mb-3">
@@ -321,13 +393,25 @@ export default function BabyProductsPage() {
 
               {/* Wipes */}
               <div className="border-b border-gray-200 pb-6">
-                <div className="flex items-start justify-between mb-3">
-                  <h3 className="text-xl font-bold text-gray-900">
-                    WaterWipes Baby Wipes
-                  </h3>
-                  <div className="text-right">
-                    <div className="text-yellow-500">★★★★★</div>
-                    <div className="text-gray-600 text-sm">4.7/5</div>
+                <div className="grid md:grid-cols-4 gap-4 mb-4">
+                  <div className="md:col-span-1">
+                    <div className="bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-lg p-8 border-2 border-yellow-300 flex items-center justify-center" style={{minHeight: '200px'}}>
+                      <div className="text-center">
+                        <div className="text-7xl mb-2">🧻</div>
+                        <div className="text-sm font-semibold text-yellow-900">Baby Wipes</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="md:col-span-3">
+                    <div className="flex items-start justify-between mb-3">
+                      <h3 className="text-xl font-bold text-gray-900">
+                        WaterWipes Baby Wipes
+                      </h3>
+                      <div className="text-right">
+                        <div className="text-yellow-500">★★★★★</div>
+                        <div className="text-gray-600 text-sm">4.7/5</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <p className="text-gray-700 mb-3">
@@ -351,20 +435,32 @@ export default function BabyProductsPage() {
 
               {/* Diaper Pail */}
               <div className="border-b border-gray-200 pb-6">
-                <div className="flex items-start justify-between mb-3">
-                  <h3 className="text-xl font-bold text-gray-900">
-                    Diaper Genie Complete Diaper Pail
-                  </h3>
-                  <div className="text-right">
-                    <div className="text-yellow-500">★★★★☆</div>
-                    <div className="text-gray-600 text-sm">4.4/5</div>
+                <div className="grid md:grid-cols-4 gap-4 mb-4">
+                  <div className="md:col-span-1">
+                    <div className="bg-gradient-to-br from-orange-100 to-orange-200 rounded-lg p-8 border-2 border-orange-300 flex items-center justify-center" style={{minHeight: '200px'}}>
+                      <div className="text-center">
+                        <div className="text-7xl mb-2">🎁</div>
+                        <div className="text-sm font-semibold text-orange-900">Diaper Pail</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="md:col-span-3">
+                    <div className="flex items-start justify-between mb-3">
+                      <h3 className="text-xl font-bold text-gray-900">
+                        Diaper Genie Complete Diaper Pail
+                      </h3>
+                      <div className="text-right">
+                        <div className="text-yellow-500">★★★★☆</div>
+                        <div className="text-gray-600 text-sm">4.4/5</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <p className="text-gray-700 mb-3">
                   The most popular diaper pail. Locks away odors with carbon filter and antimicrobial film.
                   Holds up to 270 diapers. Hands-free foot pedal.
                 </p>
-                <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
                   <p className="text-sm text-gray-700 mb-3">
                     <strong>Price:</strong> $40-60 | <strong>Note:</strong> Requires refill bags (~$6-8 each)
                   </p>
@@ -372,7 +468,7 @@ export default function BabyProductsPage() {
                     href="https://www.amazon.com/s?k=diaper+genie+complete&tag=kendallmotes-20"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block bg-yellow-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-yellow-700 transition"
+                    className="inline-block bg-orange-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-orange-700 transition"
                   >
                     View on Amazon →
                   </a>
@@ -397,13 +493,25 @@ export default function BabyProductsPage() {
             <div className="p-6 space-y-6">
 
               <div className="border-b border-gray-200 pb-6">
-                <div className="flex items-start justify-between mb-3">
-                  <h3 className="text-xl font-bold text-gray-900">
-                    Simple Joys by Carter's Baby Bodysuits
-                  </h3>
-                  <div className="text-right">
-                    <div className="text-yellow-500">★★★★★</div>
-                    <div className="text-gray-600 text-sm">4.7/5</div>
+                <div className="grid md:grid-cols-4 gap-4 mb-4">
+                  <div className="md:col-span-1">
+                    <div className="bg-gradient-to-br from-pink-100 to-pink-200 rounded-lg p-8 border-2 border-pink-300 flex items-center justify-center" style={{minHeight: '200px'}}>
+                      <div className="text-center">
+                        <div className="text-7xl mb-2">👕</div>
+                        <div className="text-sm font-semibold text-pink-900">Baby Clothing</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="md:col-span-3">
+                    <div className="flex items-start justify-between mb-3">
+                      <h3 className="text-xl font-bold text-gray-900">
+                        Simple Joys by Carter's Baby Bodysuits
+                      </h3>
+                      <div className="text-right">
+                        <div className="text-yellow-500">★★★★★</div>
+                        <div className="text-gray-600 text-sm">4.7/5</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <p className="text-gray-700 mb-3">

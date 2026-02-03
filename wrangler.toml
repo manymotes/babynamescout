@@ -1,15 +1,6 @@
 name = "babynamescout"
 compatibility_date = "2024-09-23"
-
-# Custom domains
-routes = [
-  { pattern = "babynamescout.com", custom_domain = true },
-  { pattern = "www.babynamescout.com", custom_domain = true }
-]
-
-# Static assets from the /out directory (static export)
-[assets]
-directory = "./out"
+pages_build_output_dir = "out"
 
 # Environment variables
 [vars]

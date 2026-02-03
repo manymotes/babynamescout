@@ -33,8 +33,13 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/names/unisex/" className="text-gray-600 hover:text-gray-900 text-sm">
+                <Link href="/unisex/" className="text-gray-600 hover:text-gray-900 text-sm">
                   Unisex Names
+                </Link>
+              </li>
+              <li>
+                <Link href="/popular/" className="text-gray-600 hover:text-gray-900 text-sm">
+                  Popular Names
                 </Link>
               </li>
               <li>
@@ -42,31 +47,41 @@ export function Footer() {
                   Unique Names
                 </Link>
               </li>
+              <li>
+                <Link href="/vintage/" className="text-gray-600 hover:text-gray-900 text-sm">
+                  Vintage Names
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Popular Origins */}
+          {/* By Style */}
           <div>
-            <h3 className="font-semibold text-gray-900 mb-4">Popular Origins</h3>
+            <h3 className="font-semibold text-gray-900 mb-4">By Style</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/origin/hebrew/" className="text-gray-600 hover:text-gray-900 text-sm">
-                  Hebrew Names
+                <Link href="/biblical/" className="text-gray-600 hover:text-gray-900 text-sm">
+                  Biblical Names
                 </Link>
               </li>
               <li>
-                <Link href="/origin/celtic/" className="text-gray-600 hover:text-gray-900 text-sm">
-                  Celtic Names
+                <Link href="/short-names/" className="text-gray-600 hover:text-gray-900 text-sm">
+                  Short Names
                 </Link>
               </li>
               <li>
-                <Link href="/origin/latin/" className="text-gray-600 hover:text-gray-900 text-sm">
-                  Latin Names
+                <Link href="/twin-names/" className="text-gray-600 hover:text-gray-900 text-sm">
+                  Twin Names
                 </Link>
               </li>
               <li>
-                <Link href="/origin/greek/" className="text-gray-600 hover:text-gray-900 text-sm">
-                  Greek Names
+                <Link href="/middle-names/" className="text-gray-600 hover:text-gray-900 text-sm">
+                  Middle Names Guide
+                </Link>
+              </li>
+              <li>
+                <Link href="/origins/" className="text-gray-600 hover:text-gray-900 text-sm">
+                  All Origins →
                 </Link>
               </li>
             </ul>
@@ -98,6 +113,46 @@ export function Footer() {
               </li>
             </ul>
           </div>
+        </div>
+
+        {/* Explore More - Wellness/Parenting Group */}
+        <div className="border-t border-gray-200 mt-8 pt-8">
+          <h3 className="font-semibold text-gray-900 mb-4">Explore More</h3>
+          <p className="text-gray-600 text-sm mb-4">
+            Discover related resources for spiritual wellness and parenting:
+          </p>
+          <ul className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
+            <li>
+              <a
+                href="https://horoscopehub.io"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-gray-900"
+              >
+                Daily Horoscopes →
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://crystalguide.co"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-gray-900"
+              >
+                Crystal Meanings & Healing →
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://mypregnancyweek.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-gray-900"
+              >
+                Pregnancy Week-by-Week →
+              </a>
+            </li>
+          </ul>
         </div>
 
         <div className="border-t border-gray-200 mt-8 pt-8 text-center text-sm text-gray-500">

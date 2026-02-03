@@ -24,13 +24,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const genderLabel = name.gender === 'girl' ? 'Girl' : name.gender === 'boy' ? 'Boy' : 'Unisex'
+  const canonicalUrl = `https://babynamescout.com/name/${slug}/`
 
   return {
     title: `${name.name} - Meaning, Origin & Popularity | ${genderLabel} Baby Name`,
     description: `${name.name} is a ${name.origin} ${genderLabel.toLowerCase()} name meaning "${name.meaning}". Learn about the name ${name.name}, its history, popularity, and famous namesakes.`,
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       title: `${name.name} - Baby Name Meaning & Origin`,
       description: `Discover the meaning of ${name.name}: ${name.meaning}`,
+      url: canonicalUrl,
     }
   }
 }
@@ -400,6 +405,22 @@ export default async function NamePage({ params }: PageProps) {
               </div>
             )}
           </div>
+        </section>
+
+        {/* Pregnancy Resources - Cross-site Link */}
+        <section className="bg-blue-50 rounded-xl border border-blue-200 p-6 mb-8">
+          <h2 className="text-xl font-bold text-gray-900 mb-3">Pregnancy Resources</h2>
+          <p className="text-gray-700 text-sm mb-3">
+            Track your pregnancy week-by-week and learn what to expect at each stage of your journey:
+          </p>
+          <a
+            href="https://mypregnancyweek.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary-600 hover:text-primary-700 font-medium inline-flex items-center gap-1 text-sm"
+          >
+            Pregnancy week-by-week guide →
+          </a>
         </section>
       </div>
     </>

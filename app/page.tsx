@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Script from 'next/script'
 import { getAllNames, getNamesByGender, getOrigins } from '@/lib/data'
 
 const websiteUrl = 'https://babynamescout.com'
@@ -36,11 +37,13 @@ export default function HomePage() {
 
   return (
     <>
-      <script
+      <Script
+        id="website-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
       />
-      <script
+      <Script
+        id="organization-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />
@@ -147,29 +150,41 @@ export default function HomePage() {
       <section className="mb-16">
         <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Popular Name Categories</h2>
         <div className="grid md:grid-cols-3 gap-6">
-          <Link href="/meaning/strong/" className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6 hover:shadow-lg transition">
-            <h3 className="font-bold text-purple-900 mb-2">Names Meaning &quot;Strong&quot;</h3>
-            <p className="text-purple-700 text-sm">Powerful names for your little warrior</p>
+          <Link href="/popular/" className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 hover:shadow-lg transition">
+            <h3 className="font-bold text-blue-900 mb-2">Popular Names</h3>
+            <p className="text-blue-700 text-sm">Top 100 most-loved baby names</p>
           </Link>
-          <Link href="/meaning/love/" className="bg-gradient-to-br from-pink-50 to-pink-100 rounded-xl p-6 hover:shadow-lg transition">
-            <h3 className="font-bold text-pink-900 mb-2">Names Meaning &quot;Love&quot;</h3>
-            <p className="text-pink-700 text-sm">Beautiful names full of love</p>
-          </Link>
-          <Link href="/meaning/nature/" className="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6 hover:shadow-lg transition">
-            <h3 className="font-bold text-green-900 mb-2">Nature-Inspired Names</h3>
-            <p className="text-green-700 text-sm">Names inspired by the natural world</p>
-          </Link>
-          <Link href="/trends/2026/" className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 hover:shadow-lg transition">
-            <h3 className="font-bold text-blue-900 mb-2">Trending Names 2026</h3>
-            <p className="text-blue-700 text-sm">The hottest baby name trends this year</p>
+          <Link href="/trends/2026/" className="bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-xl p-6 hover:shadow-lg transition">
+            <h3 className="font-bold text-indigo-900 mb-2">Trending Names 2026</h3>
+            <p className="text-indigo-700 text-sm">The hottest baby name trends this year</p>
           </Link>
           <Link href="/unique/" className="bg-gradient-to-br from-amber-50 to-amber-100 rounded-xl p-6 hover:shadow-lg transition">
             <h3 className="font-bold text-amber-900 mb-2">Unique & Rare Names</h3>
             <p className="text-amber-700 text-sm">Stand-out names for your special one</p>
           </Link>
-          <Link href="/generator/" className="bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-xl p-6 hover:shadow-lg transition">
-            <h3 className="font-bold text-indigo-900 mb-2">Name Generator</h3>
-            <p className="text-indigo-700 text-sm">Get personalized name suggestions</p>
+          <Link href="/vintage/" className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6 hover:shadow-lg transition">
+            <h3 className="font-bold text-purple-900 mb-2">Vintage Names</h3>
+            <p className="text-purple-700 text-sm">Classic names making a comeback</p>
+          </Link>
+          <Link href="/unisex/" className="bg-gradient-to-br from-teal-50 to-teal-100 rounded-xl p-6 hover:shadow-lg transition">
+            <h3 className="font-bold text-teal-900 mb-2">Unisex Names</h3>
+            <p className="text-teal-700 text-sm">Gender-neutral names for any child</p>
+          </Link>
+          <Link href="/biblical/" className="bg-gradient-to-br from-rose-50 to-rose-100 rounded-xl p-6 hover:shadow-lg transition">
+            <h3 className="font-bold text-rose-900 mb-2">Biblical Names</h3>
+            <p className="text-rose-700 text-sm">Names from scripture with spiritual meaning</p>
+          </Link>
+          <Link href="/short-names/" className="bg-gradient-to-br from-cyan-50 to-cyan-100 rounded-xl p-6 hover:shadow-lg transition">
+            <h3 className="font-bold text-cyan-900 mb-2">Short Names</h3>
+            <p className="text-cyan-700 text-sm">3-4 letter names that pack a punch</p>
+          </Link>
+          <Link href="/twin-names/" className="bg-gradient-to-br from-pink-50 to-pink-100 rounded-xl p-6 hover:shadow-lg transition">
+            <h3 className="font-bold text-pink-900 mb-2">Twin Names</h3>
+            <p className="text-pink-700 text-sm">Perfect name pairs for your twins</p>
+          </Link>
+          <Link href="/middle-names/" className="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6 hover:shadow-lg transition">
+            <h3 className="font-bold text-green-900 mb-2">Middle Names Guide</h3>
+            <p className="text-green-700 text-sm">Tips for choosing the perfect middle name</p>
           </Link>
         </div>
       </section>

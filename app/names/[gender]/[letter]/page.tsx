@@ -41,13 +41,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const upperLetter = letter.toUpperCase()
   const genderLabel = genderLabels[gender as Gender]
   const names = getNamesByLetter(letter, gender as Gender)
+  const canonicalUrl = `https://babynamescout.com/names/${gender}/${letter}/`
 
   return {
     title: `${genderLabel} Names Starting with ${upperLetter} - ${names.length} Beautiful Names`,
     description: `Discover ${names.length} beautiful ${genderLabel.toLowerCase()} baby names starting with the letter ${upperLetter}. Find the perfect name with meanings, origins, and popularity rankings.`,
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       title: `${genderLabel} Baby Names Starting with ${upperLetter}`,
       description: `Browse ${names.length} ${genderLabel.toLowerCase()} names beginning with ${upperLetter}`,
+      url: canonicalUrl,
     }
   }
 }
