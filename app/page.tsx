@@ -180,6 +180,21 @@ export default function HomePage() {
             <h3 className="font-bold text-yellow-900 mb-2">Happy Names</h3>
             <p className="text-yellow-700 text-sm">Names meaning joy, blessed, and cheerful</p>
           </Link>
+          <Link href="/meanings/star-and-sky/" className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl p-6 hover:shadow-lg transition group">
+            <div className="text-3xl mb-2">⭐</div>
+            <h3 className="font-bold text-blue-900 mb-2">Star & Sky Names</h3>
+            <p className="text-blue-700 text-sm">Celestial names inspired by stars and heavens</p>
+          </Link>
+          <Link href="/meanings/water-and-ocean/" className="bg-gradient-to-br from-cyan-50 to-blue-100 rounded-xl p-6 hover:shadow-lg transition group">
+            <div className="text-3xl mb-2">🌊</div>
+            <h3 className="font-bold text-cyan-900 mb-2">Water & Ocean Names</h3>
+            <p className="text-cyan-700 text-sm">Aquatic names inspired by water elements</p>
+          </Link>
+          <Link href="/meanings/courage-and-bravery/" className="bg-gradient-to-br from-amber-50 to-orange-100 rounded-xl p-6 hover:shadow-lg transition group">
+            <div className="text-3xl mb-2">🦁</div>
+            <h3 className="font-bold text-amber-900 mb-2">Courage Names</h3>
+            <p className="text-amber-700 text-sm">Names meaning brave, fearless, and valiant</p>
+          </Link>
         </div>
         <div className="text-center">
           <Link href="/meanings/" className="text-primary-600 hover:text-primary-700 font-medium">
@@ -227,6 +242,10 @@ export default function HomePage() {
           <Link href="/middle-names/" className="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6 hover:shadow-lg transition">
             <h3 className="font-bold text-green-900 mb-2">Middle Names Guide</h3>
             <p className="text-green-700 text-sm">Tips for choosing the perfect middle name</p>
+          </Link>
+          <Link href="/sibling-names/" className="bg-gradient-to-br from-purple-50 to-indigo-100 rounded-xl p-6 hover:shadow-lg transition">
+            <h3 className="font-bold text-purple-900 mb-2">Sibling Name Combinations</h3>
+            <p className="text-purple-700 text-sm">Perfect name pairs for brothers, sisters, and twins</p>
           </Link>
         </div>
       </section>

@@ -34,6 +34,24 @@ export default function MeaningsPage() {
     { name: 'Happy Names', slug: 'happy-names', icon: '😊', description: 'Names meaning joy, happiness, blessed, and cheerful' },
   ]
 
+  const newCollections = [
+    { name: 'Strength and Power', slug: 'strength-and-power', icon: '💪', description: 'Names celebrating strength, power, and fortitude' },
+    { name: 'Wisdom and Intelligence', slug: 'wisdom-and-intelligence', icon: '🧠', description: 'Names meaning wisdom, intelligence, and knowledge' },
+    { name: 'Beauty and Light', slug: 'beauty-and-light', icon: '✨', description: 'Names celebrating beauty, radiance, and illumination' },
+    { name: 'Nature and Earth', slug: 'nature-and-earth', icon: '🌍', description: 'Names inspired by nature, earth, and landscapes' },
+    { name: 'Joy and Happiness', slug: 'joy-and-happiness', icon: '😊', description: 'Names meaning joy, happiness, and delight' },
+    { name: 'Love and Peace', slug: 'love-and-peace', icon: '❤️', description: 'Names celebrating love, peace, and harmony' },
+    { name: 'Royalty and Nobility', slug: 'royalty-and-nobility', icon: '👑', description: 'Names meaning royal, noble, and majestic' },
+    { name: 'Faith and Spirit', slug: 'faith-and-spirit', icon: '🙏', description: 'Names meaning faith, spirit, and divine connection' },
+    { name: 'Courage and Bravery', slug: 'courage-and-bravery', icon: '🦁', description: 'Names celebrating courage, bravery, and valor' },
+    { name: 'Star and Sky', slug: 'star-and-sky', icon: '⭐', description: 'Names inspired by stars, sky, and celestial bodies' },
+    { name: 'Water and Ocean', slug: 'water-and-ocean', icon: '🌊', description: 'Names inspired by water, ocean, and aquatic elements' },
+    { name: 'Victory and Success', slug: 'victory-and-success', icon: '🏆', description: 'Names meaning victory, success, and triumph' },
+    { name: 'Fire and Passion', slug: 'fire-and-passion', icon: '🔥', description: 'Names meaning fire, passion, and blazing spirit' },
+    { name: 'New Beginnings', slug: 'new-beginnings', icon: '🌱', description: 'Names celebrating new beginnings and fresh starts' },
+    { name: 'Rare and Unique', slug: 'rare-unique-meanings', icon: '💎', description: 'Names with rare and unusual meanings' },
+  ]
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-12">
       <div className="text-center mb-12">
@@ -64,6 +82,27 @@ export default function MeaningsPage() {
               <p className="text-gray-600 text-sm">{collection.description}</p>
               <span className="text-primary-600 font-medium mt-4 inline-block">
                 Explore collection &rarr;
+              </span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* New Deep Dive Collections */}
+      <section className="mb-16">
+        <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Explore More Meaning Collections</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {newCollections.map(collection => (
+            <Link
+              key={collection.slug}
+              href={`/meanings/${collection.slug}/`}
+              className="bg-white border border-gray-200 hover:border-primary-300 hover:shadow-lg rounded-xl p-5 transition"
+            >
+              <span className="text-3xl mb-2 block">{collection.icon}</span>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">{collection.name}</h3>
+              <p className="text-gray-600 text-sm">{collection.description}</p>
+              <span className="text-primary-600 font-medium mt-3 inline-block text-sm">
+                View collection &rarr;
               </span>
             </Link>
           ))}
