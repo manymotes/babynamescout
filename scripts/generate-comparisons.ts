@@ -64,16 +64,16 @@ function generateComparisons(): NameComparison[] {
 
   const names = Array.from(uniqueNames.values())
 
-  // Get top 50 girls and boys by popularity
+  // Get top 8 girls and boys by popularity (reduced to meet Cloudflare Pages 20k file limit)
   const topGirls = names
-    .filter(n => n.gender === 'girl' && n.popularity && n.popularity <= 50)
+    .filter(n => n.gender === 'girl' && n.popularity && n.popularity <= 8)
     .sort((a, b) => (a.popularity || 999) - (b.popularity || 999))
-    .slice(0, 50)
+    .slice(0, 8)
 
   const topBoys = names
-    .filter(n => n.gender === 'boy' && n.popularity && n.popularity <= 50)
+    .filter(n => n.gender === 'boy' && n.popularity && n.popularity <= 8)
     .sort((a, b) => (a.popularity || 999) - (b.popularity || 999))
-    .slice(0, 50)
+    .slice(0, 8)
 
   console.log(`Found ${topGirls.length} top girl names and ${topBoys.length} top boy names`)
 
@@ -103,7 +103,7 @@ function generateComparisons(): NameComparison[] {
     })
   }
 
-  // 1. Top 50 girl names vs each other
+  // 1. Top 8 girl names vs each other
   console.log('Generating girl name comparisons...')
   for (let i = 0; i < topGirls.length; i++) {
     for (let j = i + 1; j < topGirls.length; j++) {
@@ -111,7 +111,7 @@ function generateComparisons(): NameComparison[] {
     }
   }
 
-  // 2. Top 50 boy names vs each other
+  // 2. Top 8 boy names vs each other
   console.log('Generating boy name comparisons...')
   for (let i = 0; i < topBoys.length; i++) {
     for (let j = i + 1; j < topBoys.length; j++) {
@@ -120,83 +120,85 @@ function generateComparisons(): NameComparison[] {
   }
 
   // 3. Similar sounding names (same first letter, same gender, top 100)
-  console.log('Generating similar sounding name comparisons...')
-  const top100Girls = names
-    .filter(n => n.gender === 'girl' && n.popularity && n.popularity <= 100)
-    .sort((a, b) => (a.popularity || 999) - (b.popularity || 999))
+  // COMMENTED OUT TO REDUCE FILE COUNT FOR CLOUDFLARE PAGES LIMIT
+  // console.log('Generating similar sounding name comparisons...')
+  // const top100Girls = names
+  //   .filter(n => n.gender === 'girl' && n.popularity && n.popularity <= 100)
+  //   .sort((a, b) => (a.popularity || 999) - (b.popularity || 999))
 
-  const top100Boys = names
-    .filter(n => n.gender === 'boy' && n.popularity && n.popularity <= 100)
-    .sort((a, b) => (a.popularity || 999) - (b.popularity || 999))
+  // const top100Boys = names
+  //   .filter(n => n.gender === 'boy' && n.popularity && n.popularity <= 100)
+  //   .sort((a, b) => (a.popularity || 999) - (b.popularity || 999))
 
-  // Group by first letter
-  const girlsByLetter = new Map<string, BabyName[]>()
-  const boysByLetter = new Map<string, BabyName[]>()
+  // // Group by first letter
+  // const girlsByLetter = new Map<string, BabyName[]>()
+  // const boysByLetter = new Map<string, BabyName[]>()
 
-  top100Girls.forEach(name => {
-    const letter = name.name[0].toUpperCase()
-    if (!girlsByLetter.has(letter)) girlsByLetter.set(letter, [])
-    girlsByLetter.get(letter)!.push(name)
-  })
+  // top100Girls.forEach(name => {
+  //   const letter = name.name[0].toUpperCase()
+  //   if (!girlsByLetter.has(letter)) girlsByLetter.set(letter, [])
+  //   girlsByLetter.get(letter)!.push(name)
+  // })
 
-  top100Boys.forEach(name => {
-    const letter = name.name[0].toUpperCase()
-    if (!boysByLetter.has(letter)) boysByLetter.set(letter, [])
-    boysByLetter.get(letter)!.push(name)
-  })
+  // top100Boys.forEach(name => {
+  //   const letter = name.name[0].toUpperCase()
+  //   if (!boysByLetter.has(letter)) boysByLetter.set(letter, [])
+  //   boysByLetter.get(letter)!.push(name)
+  // })
 
-  // Add comparisons for names starting with same letter (limit to avoid too many)
-  girlsByLetter.forEach(letterNames => {
-    for (let i = 0; i < letterNames.length && i < 10; i++) {
-      for (let j = i + 1; j < letterNames.length && j < 10; j++) {
-        addComparison(letterNames[i], letterNames[j])
-      }
-    }
-  })
+  // // Add comparisons for names starting with same letter (limit to avoid too many)
+  // girlsByLetter.forEach(letterNames => {
+  //   for (let i = 0; i < letterNames.length && i < 10; i++) {
+  //     for (let j = i + 1; j < letterNames.length && j < 10; j++) {
+  //       addComparison(letterNames[i], letterNames[j])
+  //     }
+  //   }
+  // })
 
-  boysByLetter.forEach(letterNames => {
-    for (let i = 0; i < letterNames.length && i < 10; i++) {
-      for (let j = i + 1; j < letterNames.length && j < 10; j++) {
-        addComparison(letterNames[i], letterNames[j])
-      }
-    }
-  })
+  // boysByLetter.forEach(letterNames => {
+  //   for (let i = 0; i < letterNames.length && i < 10; i++) {
+  //     for (let j = i + 1; j < letterNames.length && j < 10; j++) {
+  //       addComparison(letterNames[i], letterNames[j])
+  //     }
+  //   }
+  // })
 
-  // 4. Same origin names (top 100)
-  console.log('Generating same origin name comparisons...')
-  const girlsByOrigin = new Map<string, BabyName[]>()
-  const boysByOrigin = new Map<string, BabyName[]>()
+  // // 4. Same origin names (top 100)
+  // COMMENTED OUT TO REDUCE FILE COUNT FOR CLOUDFLARE PAGES LIMIT
+  // console.log('Generating same origin name comparisons...')
+  // const girlsByOrigin = new Map<string, BabyName[]>()
+  // const boysByOrigin = new Map<string, BabyName[]>()
 
-  top100Girls.forEach(name => {
-    if (!girlsByOrigin.has(name.origin)) girlsByOrigin.set(name.origin, [])
-    girlsByOrigin.get(name.origin)!.push(name)
-  })
+  // top100Girls.forEach(name => {
+  //   if (!girlsByOrigin.has(name.origin)) girlsByOrigin.set(name.origin, [])
+  //   girlsByOrigin.get(name.origin)!.push(name)
+  // })
 
-  top100Boys.forEach(name => {
-    if (!boysByOrigin.has(name.origin)) boysByOrigin.set(name.origin, [])
-    boysByOrigin.get(name.origin)!.push(name)
-  })
+  // top100Boys.forEach(name => {
+  //   if (!boysByOrigin.has(name.origin)) boysByOrigin.set(name.origin, [])
+  //   boysByOrigin.get(name.origin)!.push(name)
+  // })
 
-  // Add comparisons for names with same origin (limit to top 5 per origin)
-  girlsByOrigin.forEach(originNames => {
-    if (originNames.length < 2) return
-    const limited = originNames.slice(0, 8)
-    for (let i = 0; i < limited.length; i++) {
-      for (let j = i + 1; j < limited.length; j++) {
-        addComparison(limited[i], limited[j])
-      }
-    }
-  })
+  // // Add comparisons for names with same origin (limit to top 5 per origin)
+  // girlsByOrigin.forEach(originNames => {
+  //   if (originNames.length < 2) return
+  //   const limited = originNames.slice(0, 8)
+  //   for (let i = 0; i < limited.length; i++) {
+  //     for (let j = i + 1; j < limited.length; j++) {
+  //       addComparison(limited[i], limited[j])
+  //     }
+  //   }
+  // })
 
-  boysByOrigin.forEach(originNames => {
-    if (originNames.length < 2) return
-    const limited = originNames.slice(0, 8)
-    for (let i = 0; i < limited.length; i++) {
-      for (let j = i + 1; j < limited.length; j++) {
-        addComparison(limited[i], limited[j])
-      }
-    }
-  })
+  // boysByOrigin.forEach(originNames => {
+  //   if (originNames.length < 2) return
+  //   const limited = originNames.slice(0, 8)
+  //   for (let i = 0; i < limited.length; i++) {
+  //     for (let j = i + 1; j < limited.length; j++) {
+  //       addComparison(limited[i], limited[j])
+  //     }
+  //   }
+  // })
 
   console.log(`Generated ${comparisons.length} total comparisons`)
   return comparisons
@@ -225,7 +227,7 @@ export interface NameComparison {
   gender: 'girl' | 'boy' | 'mixed'
 }
 
-export const comparisons = ${JSON.stringify(comparisons, null, 2)}
+export const comparisons: NameComparison[] = ${JSON.stringify(comparisons, null, 2)}
 
 export function getAllComparisons(): NameComparison[] {
   return comparisons
