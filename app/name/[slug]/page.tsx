@@ -36,6 +36,22 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: `${name.name} - Baby Name Meaning & Origin`,
       description: `Discover the meaning of ${name.name}: ${name.meaning}`,
       url: canonicalUrl,
+      type: 'article',
+      siteName: 'BabyNameScout',
+      images: [
+        {
+          url: `https://babynamescout.com/og/name/${slug}.png`,
+          width: 1200,
+          height: 630,
+          alt: `${name.name} - ${genderLabel} baby name meaning ${name.meaning}`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${name.name} - Baby Name Meaning & Origin`,
+      description: `Discover the meaning of ${name.name}: ${name.meaning}`,
+      images: [`https://babynamescout.com/og/name/${slug}.png`],
     }
   }
 }
@@ -173,6 +189,37 @@ export default async function NamePage({ params }: PageProps) {
     }
   }
 
+  // Thing Schema for the baby name entity
+  const thingSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Thing',
+    name: name.name,
+    description: `${name.name} is a ${genderLabel.toLowerCase()} baby name of ${name.origin} origin meaning "${name.meaning}".`,
+    identifier: name.slug,
+    additionalProperty: [
+      {
+        '@type': 'PropertyValue',
+        name: 'gender',
+        value: genderLabel
+      },
+      {
+        '@type': 'PropertyValue',
+        name: 'origin',
+        value: name.origin
+      },
+      {
+        '@type': 'PropertyValue',
+        name: 'meaning',
+        value: name.meaning
+      },
+      ...(name.popularity ? [{
+        '@type': 'PropertyValue',
+        name: 'popularity',
+        value: `#${name.popularity} in United States (2025)`
+      }] : [])
+    ]
+  }
+
   return (
     <>
       <script
@@ -186,6 +233,10 @@ export default async function NamePage({ params }: PageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(thingSchema) }}
       />
 
       <div className="max-w-4xl mx-auto px-4 py-12">
@@ -405,6 +456,21 @@ export default async function NamePage({ params }: PageProps) {
               </div>
             )}
           </div>
+        </section>
+
+        {/* Sibling Name Finder Callout */}
+        <section className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl border-2 border-purple-200 p-6 mb-8">
+          <h2 className="text-xl font-bold text-gray-900 mb-3">Looking for a Sibling Name?</h2>
+          <p className="text-gray-700 text-sm mb-4">
+            Find the perfect sibling name to pair with {name.name}. We have curated 50+ suggestions based on
+            origin, style, sound patterns, and popularity to help you create the ideal sibling combination.
+          </p>
+          <Link
+            href={`/sibling-names-for/${name.slug}/`}
+            className="inline-flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-medium transition"
+          >
+            View Sibling Names for {name.name} →
+          </Link>
         </section>
 
         {/* Pregnancy Resources - Cross-site Link */}

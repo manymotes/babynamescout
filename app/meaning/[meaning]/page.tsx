@@ -29,6 +29,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `Baby Names Meaning "${category.name}" - ${names.length} Beautiful Names`,
     description: `Discover ${names.length} baby names meaning ${category.name.toLowerCase()}. ${category.description}. Find the perfect meaningful name for your baby.`,
+    alternates: {
+      canonical: `https://babynamescout.com/meaning/${meaning}/`,
+    },
     openGraph: {
       title: `Baby Names Meaning ${category.name}`,
       description: category.description,
@@ -101,6 +104,25 @@ export default async function MeaningPage({ params }: PageProps) {
     ]
   }
 
+  // CollectionPage Schema
+  const collectionPageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: `Baby Names Meaning "${category.name}"`,
+    description: `Discover ${names.length} baby names meaning ${category.name.toLowerCase()}.`,
+    url: `${websiteUrl}/meaning/${category.slug}/`,
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: names.length,
+      itemListElement: names.slice(0, 10).map((n, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: n.name,
+        url: `${websiteUrl}/name/${n.slug}/`
+      }))
+    }
+  }
+
   return (
     <>
       <script
@@ -110,6 +132,10 @@ export default async function MeaningPage({ params }: PageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionPageSchema) }}
       />
     <div className="max-w-6xl mx-auto px-4 py-12">
       {/* Breadcrumb */}

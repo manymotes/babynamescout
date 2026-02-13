@@ -29,6 +29,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `${origin.name} Baby Names - ${names.length} Beautiful Names with Meanings`,
     description: `Discover ${names.length} beautiful ${origin.name} baby names. ${origin.description}. Find the perfect name with origins and meanings.`,
+    alternates: {
+      canonical: `https://babynamescout.com/origin/${originSlug}/`,
+    },
     openGraph: {
       title: `${origin.name} Baby Names | BabyNameFinder`,
       description: `Browse ${names.length} ${origin.name} names with meanings`,
@@ -102,6 +105,25 @@ export default async function OriginPage({ params }: PageProps) {
     ]
   }
 
+  // CollectionPage Schema
+  const collectionPageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: `${origin.name} Baby Names`,
+    description: `Discover ${names.length} beautiful ${origin.name} baby names with meanings and origins.`,
+    url: `${websiteUrl}/origin/${origin.slug}/`,
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: names.length,
+      itemListElement: names.slice(0, 10).map((n, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: n.name,
+        url: `${websiteUrl}/name/${n.slug}/`
+      }))
+    }
+  }
+
   return (
     <>
       <script
@@ -111,6 +133,10 @@ export default async function OriginPage({ params }: PageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionPageSchema) }}
       />
 
       <div className="max-w-6xl mx-auto px-4 py-12">
