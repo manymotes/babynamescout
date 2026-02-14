@@ -12,7 +12,11 @@ interface PageProps {
 
 export async function generateStaticParams() {
   const names = getAllNames()
-  return names.map(name => ({ slug: name.slug }))
+  // Generate for top 1500 names to fit within Cloudflare Pages file limit
+  const topNames = names
+    .filter(n => n.popularity && n.popularity <= 1500)
+    .slice(0, 1500)
+  return topNames.map(name => ({ slug: name.slug }))
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
