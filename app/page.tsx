@@ -90,6 +90,85 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Trending Names */}
+      <section className="mb-16">
+        <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Trending Names</h2>
+        <p className="text-gray-600 text-center mb-6 max-w-2xl mx-auto">
+          Discover the most searched baby names right now. These beautiful names are capturing parents&apos; attention.
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+          <Link
+            href="/name/aliana/"
+            className="bg-gradient-to-br from-primary-50 to-primary-100 border border-primary-200 rounded-xl p-4 text-center hover:shadow-md transition group"
+          >
+            <span className="text-xl font-bold text-primary-700 group-hover:text-primary-800">Aliana</span>
+            <p className="text-primary-600 text-sm mt-1">Noble & graceful</p>
+          </Link>
+          <Link
+            href="/name/elise/"
+            className="bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200 rounded-xl p-4 text-center hover:shadow-md transition group"
+          >
+            <span className="text-xl font-bold text-purple-700 group-hover:text-purple-800">Elise</span>
+            <p className="text-purple-600 text-sm mt-1">Pledged to God</p>
+          </Link>
+          <Link
+            href="/name/ines/"
+            className="bg-gradient-to-br from-pink-50 to-pink-100 border border-pink-200 rounded-xl p-4 text-center hover:shadow-md transition group"
+          >
+            <span className="text-xl font-bold text-pink-700 group-hover:text-pink-800">Ines</span>
+            <p className="text-pink-600 text-sm mt-1">Pure & holy</p>
+          </Link>
+          <Link
+            href="/name/reign/"
+            className="bg-gradient-to-br from-amber-50 to-amber-100 border border-amber-200 rounded-xl p-4 text-center hover:shadow-md transition group"
+          >
+            <span className="text-xl font-bold text-amber-700 group-hover:text-amber-800">Reign</span>
+            <p className="text-amber-600 text-sm mt-1">Royal authority</p>
+          </Link>
+          <Link
+            href="/name/navy/"
+            className="bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-xl p-4 text-center hover:shadow-md transition group"
+          >
+            <span className="text-xl font-bold text-blue-700 group-hover:text-blue-800">Navy</span>
+            <p className="text-blue-600 text-sm mt-1">Deep & steadfast</p>
+          </Link>
+        </div>
+      </section>
+
+      {/* Naming Style Quiz CTA */}
+      <section className="mb-16">
+        <Link href="/quiz/naming-style/" className="block group">
+          <div className="bg-gradient-to-r from-primary-50 via-purple-50 to-secondary-50 border border-primary-200 rounded-2xl p-8 hover:shadow-lg transition-all">
+            <div className="flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
+              <div className="flex-shrink-0">
+                <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-2xl flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">
+                  ✨
+                </div>
+              </div>
+              <div className="flex-grow">
+                <div className="flex items-center justify-center md:justify-start gap-2 mb-2">
+                  <span className="px-3 py-1 bg-primary-100 text-primary-700 text-xs font-medium rounded-full">
+                    Free Quiz
+                  </span>
+                  <span className="text-gray-500 text-sm">2 min</span>
+                </div>
+                <h2 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">
+                  What&apos;s Your Baby Naming Style?
+                </h2>
+                <p className="text-gray-600">
+                  Classic? Modern? Unique? Take our quick quiz to discover your naming personality and get personalized suggestions.
+                </p>
+              </div>
+              <div className="flex-shrink-0">
+                <div className="w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center group-hover:bg-primary-500 group-hover:border-primary-500 group-hover:text-white transition-all text-gray-400">
+                  →
+                </div>
+              </div>
+            </div>
+          </div>
+        </Link>
+      </section>
+
       {/* Browse by Letter */}
       <section className="mb-16">
         <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Browse Names by Letter</h2>
@@ -244,8 +323,8 @@ export default function HomePage() {
             <p className="text-green-700 text-sm">Tips for choosing the perfect middle name</p>
           </Link>
           <Link href="/sibling-names/" className="bg-gradient-to-br from-purple-50 to-indigo-100 rounded-xl p-6 hover:shadow-lg transition">
-            <h3 className="font-bold text-purple-900 mb-2">Sibling Name Combinations</h3>
-            <p className="text-purple-700 text-sm">Perfect name pairs for brothers, sisters, and twins</p>
+            <h3 className="font-bold text-purple-900 mb-2">Sibling Name Finder</h3>
+            <p className="text-purple-700 text-sm">Find perfect sibling names for any name - 2,000+ personalized pairings</p>
           </Link>
         </div>
       </section>

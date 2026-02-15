@@ -31,8 +31,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const canonicalUrl = `https://babynamescout.com/name/${slug}/`
 
   return {
-    title: `${name.name} - Meaning, Origin & Popularity | ${genderLabel} Baby Name`,
-    description: `${name.name} is a ${name.origin} ${genderLabel.toLowerCase()} name meaning "${name.meaning}". Learn about the name ${name.name}, its history, popularity, and famous namesakes.`,
+    title: `${name.name} Name Meaning, Origin & Popularity 2026`,
+    description: `What does ${name.name} mean? ${name.name} is a ${name.origin} ${genderLabel.toLowerCase()} name meaning "${name.meaning}". Learn about the name ${name.name}, its history, popularity, and famous namesakes.`,
     alternates: {
       canonical: canonicalUrl,
     },
