@@ -2,7 +2,7 @@
 
 export const siteConfig = {
   // Google Analytics ID
-  googleAnalyticsId: process.env.NEXT_PUBLIC_GA_ID || 'G-C5BZYHVTJX',
+  googleAnalyticsId: process.env.NEXT_PUBLIC_GA_ID || 'G-C58ZYHVTJX',
 
   // AdSense Client ID (optional)
   adSenseClientId: process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || 'ca-pub-2504139269985873',
