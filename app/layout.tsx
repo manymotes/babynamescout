@@ -4,6 +4,11 @@ import './globals.css'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { Analytics } from '@/components/Analytics'
+import QuickActions from '@/components/QuickActions'
+import ReadingProgress from '@/components/ReadingProgress'
+import BackToTop from '@/components/BackToTop'
+import { siteConfig } from '@/lib/config'
+import AdsterraAd from '@/components/AdsterraAd'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -20,9 +25,9 @@ export const metadata: Metadata = {
   description: 'Explore thousands of baby names by origin, meaning, and letter. Find unique girl names, boy names, and unisex names with our comprehensive baby name database.',
   keywords: ['baby names', 'girl names', 'boy names', 'name meanings', 'baby name scout', 'unique names'],
   authors: [{ name: 'BabyNameScout' }],
-  metadataBase: new URL('https://babynamescout.com'),
+  metadataBase: new URL(siteConfig.url),
   alternates: {
-    canonical: 'https://babynamescout.com',
+    canonical: siteConfig.url,
   },
   openGraph: {
     type: 'website',
@@ -56,10 +61,14 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} font-sans min-h-screen flex flex-col`}>
         <Analytics />
+        <ReadingProgress />
         <Header />
         <main className="flex-1">
           {children}
         </main>
+        <QuickActions variant="sticky" />
+        <AdsterraAd className="max-w-4xl mx-auto px-4 my-8" />
+        <BackToTop />
         <Footer />
       </body>
     </html>
