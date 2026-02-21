@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getNamesByOrigin, getOriginData } from '@/lib/data'
 import { NameGrid } from '@/components/NameCard'
+import { SITE_URL } from '@/lib/config'
 
 interface PageProps {
   params: Promise<{ origin: string }>
@@ -30,7 +31,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: `${origin.name} Baby Names - ${names.length} Beautiful Names with Meanings`,
     description: `Discover ${names.length} beautiful ${origin.name} baby names. ${origin.description}. Find the perfect name with origins and meanings.`,
     alternates: {
-      canonical: `https://babynamescout.com/origin/${originSlug}/`,
+      canonical: `${SITE_URL}/origin/${originSlug}/`,
     },
     openGraph: {
       title: `${origin.name} Baby Names | BabyNameFinder`,
@@ -53,7 +54,7 @@ export default async function OriginPage({ params }: PageProps) {
   const boyNames = names.filter(n => n.gender === 'boy')
   const unisexNames = names.filter(n => n.gender === 'unisex')
 
-  const websiteUrl = 'https://babynamescout.com'
+  const websiteUrl = SITE_URL
 
   // BreadcrumbList Schema
   const breadcrumbSchema = {

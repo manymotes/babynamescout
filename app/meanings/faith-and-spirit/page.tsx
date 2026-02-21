@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { getAllNames } from '@/lib/data'
+import { SITE_URL } from '@/lib/config'
 
 export const metadata: Metadata = {
   title: 'Names Meaning Faith and Spirit - Spiritual Baby Names',
@@ -24,7 +25,7 @@ export default function FaithAndSpiritPage() {
   const girlNames = faithNames.filter(n => n.gender === 'girl').slice(0, 75)
   const boyNames = faithNames.filter(n => n.gender === 'boy').slice(0, 75)
 
-  const websiteUrl = 'https://babynamescout.com'
+  const websiteUrl = SITE_URL
 
   const breadcrumbSchema = {
     '@context': 'https://schema.org',

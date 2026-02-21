@@ -155,8 +155,29 @@ export function Footer() {
           </ul>
         </div>
 
-        <div className="border-t border-gray-200 mt-8 pt-8 text-center text-sm text-gray-500">
-          <p>&copy; {currentYear} BabyNameScout. All rights reserved.</p>
+        {/* Data Source Attribution */}
+        <div className="border-t border-gray-200 mt-8 pt-8">
+          <div className="bg-blue-50 rounded-lg p-4 mb-6">
+            <p className="text-sm text-gray-700 text-center">
+              <strong>Data Sources:</strong> Popularity data from{' '}
+              <a
+                href="https://www.ssa.gov/oact/babynames/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:text-blue-800 underline"
+              >
+                Social Security Administration
+              </a>
+              . Name meanings compiled from historical and cultural sources.
+            </p>
+          </div>
+        </div>
+
+        <div className="border-t border-gray-200 pt-6 text-center text-sm text-gray-500">
+          <p className="mb-2">&copy; {currentYear} BabyNameScout. All rights reserved.</p>
+          <p className="text-xs text-gray-400">
+            Name meanings are for informational purposes. Popularity rankings from SSA.
+          </p>
         </div>
       </div>
     </footer>

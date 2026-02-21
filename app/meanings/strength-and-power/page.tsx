@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { getAllNames } from '@/lib/data'
+import { SITE_URL } from '@/lib/config'
 
 export const metadata: Metadata = {
   title: 'Names Meaning Strength and Power - Strong Baby Names for Boys & Girls',
@@ -26,7 +27,7 @@ export default function StrengthAndPowerPage() {
   const boyNames = strengthNames.filter(n => n.gender === 'boy').slice(0, 75)
   const unisexNames = strengthNames.filter(n => n.gender === 'unisex').slice(0, 20)
 
-  const websiteUrl = 'https://babynamescout.com'
+  const websiteUrl = SITE_URL
 
   const breadcrumbSchema = {
     '@context': 'https://schema.org',

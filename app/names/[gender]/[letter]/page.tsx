@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getNamesByLetter, getAvailableLetters } from '@/lib/data'
 import { NameGrid } from '@/components/NameCard'
+import { SITE_URL } from '@/lib/config'
 
 type Gender = 'girl' | 'boy' | 'unisex'
 
@@ -41,7 +42,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const upperLetter = letter.toUpperCase()
   const genderLabel = genderLabels[gender as Gender]
   const names = getNamesByLetter(letter, gender as Gender)
-  const canonicalUrl = `https://babynamescout.com/names/${gender}/${letter}/`
+  const canonicalUrl = `${SITE_URL}/names/${gender}/${letter}/`
 
   return {
     title: `${genderLabel} Names Starting with ${upperLetter} - ${names.length} Beautiful Names`,

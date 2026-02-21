@@ -30,17 +30,17 @@ export const comparisons: NameComparison[] = [
   {
     "name1": "Amelia",
     "name2": "Olivia",
-    "slug1": "amelia-2",
+    "slug1": "amelia",
     "slug2": "olivia",
-    "comparisonSlug": "amelia-2-vs-olivia",
+    "comparisonSlug": "amelia-vs-olivia",
     "gender": "girl"
   },
   {
     "name1": "Ava",
     "name2": "Olivia",
-    "slug1": "ava-2",
+    "slug1": "ava",
     "slug2": "olivia",
-    "comparisonSlug": "ava-2-vs-olivia",
+    "comparisonSlug": "ava-vs-olivia",
     "gender": "girl"
   },
   {
@@ -78,17 +78,17 @@ export const comparisons: NameComparison[] = [
   {
     "name1": "Amelia",
     "name2": "Emma",
-    "slug1": "amelia-2",
+    "slug1": "amelia",
     "slug2": "emma",
-    "comparisonSlug": "amelia-2-vs-emma",
+    "comparisonSlug": "amelia-vs-emma",
     "gender": "girl"
   },
   {
     "name1": "Ava",
     "name2": "Emma",
-    "slug1": "ava-2",
+    "slug1": "ava",
     "slug2": "emma",
-    "comparisonSlug": "ava-2-vs-emma",
+    "comparisonSlug": "ava-vs-emma",
     "gender": "girl"
   },
   {
@@ -118,17 +118,17 @@ export const comparisons: NameComparison[] = [
   {
     "name1": "Amelia",
     "name2": "Charlotte",
-    "slug1": "amelia-2",
+    "slug1": "amelia",
     "slug2": "charlotte",
-    "comparisonSlug": "amelia-2-vs-charlotte",
+    "comparisonSlug": "amelia-vs-charlotte",
     "gender": "girl"
   },
   {
     "name1": "Ava",
     "name2": "Charlotte",
-    "slug1": "ava-2",
+    "slug1": "ava",
     "slug2": "charlotte",
-    "comparisonSlug": "ava-2-vs-charlotte",
+    "comparisonSlug": "ava-vs-charlotte",
     "gender": "girl"
   },
   {
@@ -158,57 +158,57 @@ export const comparisons: NameComparison[] = [
   {
     "name1": "Amelia",
     "name2": "Ava",
-    "slug1": "amelia-2",
-    "slug2": "ava-2",
-    "comparisonSlug": "amelia-2-vs-ava-2",
+    "slug1": "amelia",
+    "slug2": "ava",
+    "comparisonSlug": "amelia-vs-ava",
     "gender": "girl"
   },
   {
     "name1": "Amelia",
     "name2": "Mia",
-    "slug1": "amelia-2",
+    "slug1": "amelia",
     "slug2": "mia",
-    "comparisonSlug": "amelia-2-vs-mia",
+    "comparisonSlug": "amelia-vs-mia",
     "gender": "girl"
   },
   {
     "name1": "Amelia",
     "name2": "Sophia",
-    "slug1": "amelia-2",
+    "slug1": "amelia",
     "slug2": "sophia",
-    "comparisonSlug": "amelia-2-vs-sophia",
+    "comparisonSlug": "amelia-vs-sophia",
     "gender": "girl"
   },
   {
     "name1": "Amelia",
     "name2": "Isabella",
-    "slug1": "amelia-2",
+    "slug1": "amelia",
     "slug2": "isabella",
-    "comparisonSlug": "amelia-2-vs-isabella",
+    "comparisonSlug": "amelia-vs-isabella",
     "gender": "girl"
   },
   {
     "name1": "Ava",
     "name2": "Mia",
-    "slug1": "ava-2",
+    "slug1": "ava",
     "slug2": "mia",
-    "comparisonSlug": "ava-2-vs-mia",
+    "comparisonSlug": "ava-vs-mia",
     "gender": "girl"
   },
   {
     "name1": "Ava",
     "name2": "Sophia",
-    "slug1": "ava-2",
+    "slug1": "ava",
     "slug2": "sophia",
-    "comparisonSlug": "ava-2-vs-sophia",
+    "comparisonSlug": "ava-vs-sophia",
     "gender": "girl"
   },
   {
     "name1": "Ava",
     "name2": "Isabella",
-    "slug1": "ava-2",
+    "slug1": "ava",
     "slug2": "isabella",
-    "comparisonSlug": "ava-2-vs-isabella",
+    "comparisonSlug": "ava-vs-isabella",
     "gender": "girl"
   },
   {

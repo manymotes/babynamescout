@@ -2,17 +2,18 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { getPopularComparisons, getAllComparisons } from '@/lib/comparisons-data'
 import { getNameBySlug } from '@/lib/data'
+import { SITE_URL } from '@/lib/config'
 
 export const metadata: Metadata = {
   title: 'Compare Baby Names - Side by Side Name Comparisons | BabyNameScout',
   description: 'Compare popular baby names side-by-side. See meanings, origins, popularity trends, and differences between your favorite names to make the perfect choice.',
   alternates: {
-    canonical: 'https://babynamescout.com/compare/',
+    canonical: `${SITE_URL}/compare/`,
   },
   openGraph: {
     title: 'Compare Baby Names - Find the Perfect Name',
     description: 'Compare meanings, origins, and popularity of baby names side-by-side to make your decision easier.',
-    url: 'https://babynamescout.com/compare/',
+    url: `${SITE_URL}/compare/`,
   }
 }
 

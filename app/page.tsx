@@ -1,8 +1,9 @@
 import Link from 'next/link'
 import Script from 'next/script'
 import { getAllNames, getNamesByGender, getOrigins } from '@/lib/data'
+import { SITE_URL } from '@/lib/config'
 
-const websiteUrl = 'https://babynamescout.com'
+const websiteUrl = SITE_URL
 
 // WebSite Schema
 const websiteSchema = {

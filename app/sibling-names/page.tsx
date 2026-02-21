@@ -19,10 +19,24 @@ export default function SiblingNamesPage() {
         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
           Sibling Name Combinations
         </h1>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+        <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
           Find the perfect names for your growing family. Explore coordinated sibling names
           that complement each other while celebrating each child's unique identity.
         </p>
+
+        {/* Sibling Name Finder Callout */}
+        <div className="max-w-2xl mx-auto bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl p-8 text-white shadow-lg">
+          <h2 className="text-2xl font-bold mb-3">Find Sibling Names for Any Name</h2>
+          <p className="text-blue-50 mb-4">
+            Already have a name in mind? Get personalized sibling name suggestions based on origin, style, and sound.
+          </p>
+          <p className="text-sm text-blue-100 mb-4">
+            Try: <Link href="/sibling-names-for/olivia/" className="underline hover:text-white font-medium">Olivia</Link>, <Link href="/sibling-names-for/liam/" className="underline hover:text-white font-medium">Liam</Link>, <Link href="/sibling-names-for/emma/" className="underline hover:text-white font-medium">Emma</Link>, <Link href="/sibling-names-for/noah/" className="underline hover:text-white font-medium">Noah</Link>, or <Link href="/sibling-names-for/charlotte/" className="underline hover:text-white font-medium">Charlotte</Link>
+          </p>
+          <div className="text-sm bg-white/20 backdrop-blur rounded-lg p-3">
+            <span className="font-medium">How it works:</span> Visit any name page and find the sibling suggestions, or go directly to /sibling-names-for/[name-slug]/
+          </div>
+        </div>
       </div>
 
       {/* Popular Categories */}

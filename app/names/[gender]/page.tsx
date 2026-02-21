@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getNamesByGender, getAvailableLetters, getPopularNames } from '@/lib/data'
 import { NameGrid } from '@/components/NameCard'
+import { SITE_URL } from '@/lib/config'
 
 type Gender = 'girl' | 'boy' | 'unisex'
 
@@ -47,7 +48,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const config = genderConfig[gender as Gender]
-  const canonicalUrl = `https://babynamescout.com/names/${gender}/`
+  const canonicalUrl = `${SITE_URL}/names/${gender}/`
 
   return {
     title: `${config.title} - Beautiful Baby Names with Meanings`,

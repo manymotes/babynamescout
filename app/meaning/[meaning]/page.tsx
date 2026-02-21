@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getNamesByMeaning, getMeaningCategories } from '@/lib/data'
 import { NameGrid } from '@/components/NameCard'
+import { SITE_URL } from '@/lib/config'
 
 interface PageProps {
   params: Promise<{ meaning: string }>
@@ -30,7 +31,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: `Baby Names Meaning "${category.name}" - ${names.length} Beautiful Names`,
     description: `Discover ${names.length} baby names meaning ${category.name.toLowerCase()}. ${category.description}. Find the perfect meaningful name for your baby.`,
     alternates: {
-      canonical: `https://babynamescout.com/meaning/${meaning}/`,
+      canonical: `${SITE_URL}/meaning/${meaning}/`,
     },
     openGraph: {
       title: `Baby Names Meaning ${category.name}`,
@@ -52,7 +53,7 @@ export default async function MeaningPage({ params }: PageProps) {
   const girlNames = names.filter(n => n.gender === 'girl')
   const boyNames = names.filter(n => n.gender === 'boy')
 
-  const websiteUrl = 'https://babynamescout.com'
+  const websiteUrl = SITE_URL
 
   // BreadcrumbList Schema
   const breadcrumbSchema = {

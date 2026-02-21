@@ -5,6 +5,7 @@ import { getAllNames, getNameBySlug, getNamesByOrigin, getNamesByGender } from '
 import { NameGrid } from '@/components/NameCard'
 import AdSense from '@/components/AdSense'
 import { getNameContent } from '@/lib/name-content'
+import { SITE_URL } from '@/lib/config'
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -28,7 +29,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const genderLabel = name.gender === 'girl' ? 'Girl' : name.gender === 'boy' ? 'Boy' : 'Unisex'
-  const canonicalUrl = `https://babynamescout.com/name/${slug}/`
+  const canonicalUrl = `${SITE_URL}/name/${slug}/`
 
   return {
     title: `${name.name} Name Meaning, Origin & Popularity 2026`,
@@ -44,7 +45,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       siteName: 'BabyNameScout',
       images: [
         {
-          url: `https://babynamescout.com/og/name/${slug}.png`,
+          url: `${SITE_URL}/og/name/${slug}.png`,
           width: 1200,
           height: 630,
           alt: `${name.name} - ${genderLabel} baby name meaning ${name.meaning}`,
@@ -55,7 +56,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: 'summary_large_image',
       title: `${name.name} - Baby Name Meaning & Origin`,
       description: `Discover the meaning of ${name.name}: ${name.meaning}`,
-      images: [`https://babynamescout.com/og/name/${slug}.png`],
+      images: [`${SITE_URL}/og/name/${slug}.png`],
     }
   }
 }
@@ -88,7 +89,7 @@ export default async function NamePage({ params }: PageProps) {
   const colors = colorClasses[name.gender]
 
   // JSON-LD Schemas
-  const websiteUrl = 'https://babynamescout.com'
+  const websiteUrl = SITE_URL
 
   // Breadcrumb Schema
   const breadcrumbSchema = {

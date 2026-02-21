@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { getAllNames } from '@/lib/data'
+import { SITE_URL } from '@/lib/config'
 import type { BabyName } from '@/types/name'
 
 export const metadata: Metadata = {
@@ -29,7 +30,7 @@ export default function RoyalNamesPage() {
   const girlNames = royalNames.filter(n => n.gender === 'girl')
   const boyNames = royalNames.filter(n => n.gender === 'boy')
 
-  const websiteUrl = 'https://babynamescout.com'
+  const websiteUrl = SITE_URL
 
   const breadcrumbSchema = {
     '@context': 'https://schema.org',

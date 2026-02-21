@@ -5,6 +5,7 @@ import { getAllNames, getNameBySlug } from '@/lib/data'
 import { generateSiblingMatches, categorizeSiblingMatches, getSiblingPairDescription } from '@/lib/sibling-matcher'
 import { NameGrid } from '@/components/NameCard'
 import AdSense from '@/components/AdSense'
+import { SITE_URL } from '@/lib/config'
 
 interface PageProps {
   params: Promise<{ name: string }>
@@ -31,7 +32,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const genderLabel = name.gender === 'girl' ? 'Girl' : name.gender === 'boy' ? 'Boy' : 'Unisex'
-  const canonicalUrl = `https://babynamescout.com/sibling-names-for/${nameSlug}/`
+  const canonicalUrl = `${SITE_URL}/sibling-names-for/${nameSlug}/`
 
   return {
     title: `Sibling Names for ${name.name} | ${genderLabel} Baby Name Pairings`,
@@ -74,7 +75,7 @@ export default async function SiblingNamesForPage({ params }: PageProps) {
   const colors = colorClasses[name.gender]
 
   // JSON-LD Schemas
-  const websiteUrl = 'https://babynamescout.com'
+  const websiteUrl = SITE_URL
 
   // Breadcrumb Schema
   const breadcrumbSchema = {

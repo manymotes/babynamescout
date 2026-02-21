@@ -13,6 +13,7 @@ import {
 } from '@/lib/comparison-helpers'
 import { NameGrid } from '@/components/NameCard'
 import AdSense from '@/components/AdSense'
+import { SITE_URL } from '@/lib/config'
 
 interface PageProps {
   params: Promise<{ comparison: string }>
@@ -40,7 +41,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return { title: 'Comparison Not Found' }
   }
 
-  const canonicalUrl = `https://babynamescout.com/compare/${comparisonSlug}/`
+  const canonicalUrl = `${SITE_URL}/compare/${comparisonSlug}/`
   const insights = getComparisonInsights(compareNames(name1, name2))
 
   return {
@@ -113,19 +114,19 @@ export default async function ComparisonPage({ params }: PageProps) {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://babynamescout.com'
+        item: SITE_URL
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Compare Names',
-        item: 'https://babynamescout.com/compare/'
+        item: `${SITE_URL}/compare/`
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: `${name1.name} vs ${name2.name}`,
-        item: `https://babynamescout.com/compare/${comparisonSlug}/`
+        item: `${SITE_URL}/compare/${comparisonSlug}/`
       }
     ]
   }

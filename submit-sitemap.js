@@ -2,6 +2,9 @@ const { google } = require('googleapis');
 const fs = require('fs');
 const path = require('path');
 
+// Site URL from environment or default
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://babynamescout.com';
+
 async function submitSitemap() {
   try {
     // Load service account credentials
@@ -17,7 +20,7 @@ async function submitSitemap() {
     });
 
     const siteUrl = 'sc-domain:babynamescout.com';
-    const sitemapUrl = 'https://babynamescout.com/sitemap.xml';
+    const sitemapUrl = `${SITE_URL}/sitemap.xml`;
 
     console.log(`Submitting sitemap: ${sitemapUrl}`);
     

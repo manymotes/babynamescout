@@ -7,8 +7,45 @@ import { Analytics } from '@/components/Analytics'
 import QuickActions from '@/components/QuickActions'
 import ReadingProgress from '@/components/ReadingProgress'
 import BackToTop from '@/components/BackToTop'
-import { siteConfig } from '@/lib/config'
+import { siteConfig, SITE_URL } from '@/lib/config'
 import AdsterraAd from '@/components/AdsterraAd'
+
+// WebSite schema for Sitelinks Search Box
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${SITE_URL}#website`,
+  name: 'BabyNameScout',
+  url: SITE_URL,
+  description: 'Discover thousands of baby names by origin, meaning, and popularity. Find the perfect name for your baby.',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: `${SITE_URL}/search?q={search_term_string}`,
+    },
+    'query-input': 'required name=search_term_string',
+  },
+  publisher: {
+    '@id': `${SITE_URL}#organization`,
+  },
+}
+
+// Organization schema
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': `${SITE_URL}#organization`,
+  name: 'BabyNameScout',
+  url: SITE_URL,
+  logo: {
+    '@type': 'ImageObject',
+    url: `${SITE_URL}/logo.png`,
+    width: 512,
+    height: 512,
+  },
+  description: 'BabyNameScout helps parents discover the perfect name for their baby with meanings, origins, and popularity data.',
+}
 
 const inter = Inter({
   subsets: ['latin'],
@@ -60,6 +97,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} font-sans min-h-screen flex flex-col`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
         <Analytics />
         <ReadingProgress />
         <Header />

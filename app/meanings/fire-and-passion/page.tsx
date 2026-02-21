@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { getAllNames } from '@/lib/data'
+import { SITE_URL } from '@/lib/config'
 
 export const metadata: Metadata = {
   title: 'Names Meaning Fire and Passion - Fiery Baby Names',
@@ -24,7 +25,7 @@ export default function FireAndPassionPage() {
   const girlNames = fireNames.filter(n => n.gender === 'girl').slice(0, 75)
   const boyNames = fireNames.filter(n => n.gender === 'boy').slice(0, 75)
 
-  const websiteUrl = 'https://babynamescout.com'
+  const websiteUrl = SITE_URL
 
   const breadcrumbSchema = {
     '@context': 'https://schema.org',

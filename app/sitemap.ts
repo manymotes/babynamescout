@@ -1,10 +1,9 @@
 import { MetadataRoute } from 'next'
 import { getAllNames, getOriginData, getMeaningCategories, getAvailableLetters } from '@/lib/data'
 import { getAllComparisons } from '@/lib/comparisons-data'
+import { SITE_URL } from '@/lib/config'
 
 export const dynamic = 'force-static'
-
-const SITE_URL = 'https://babynamescout.com'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const names = getAllNames()
@@ -36,6 +35,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${SITE_URL}/generator/`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/quiz/`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${SITE_URL}/quiz/naming-style/`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${SITE_URL}/baby-products/`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,
@@ -293,6 +310,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
+  // Sibling names for specific names (top 2000 names)
+  const topNamesForSiblings = names
+    .filter(n => n.popularity && n.popularity <= 2000)
+    .filter((n, i, arr) => arr.findIndex(x => x.slug === n.slug) === i) // Deduplicate by slug
+    .slice(0, 2000)
+
+  const siblingNamesForPages: MetadataRoute.Sitemap = topNamesForSiblings.map(name => ({
+    url: `${SITE_URL}/sibling-names-for/${name.slug}/`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }))
+
   // Sibling names pages
   const siblingNamesPages: MetadataRoute.Sitemap = [
     {
@@ -429,5 +459,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...comparisonLandingPage,
     ...comparisonPages,
     ...siblingNamesPages,
+    ...siblingNamesForPages,
   ]
 }

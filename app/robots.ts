@@ -1,10 +1,9 @@
 import { MetadataRoute } from 'next'
+import { SITE_URL } from '@/lib/config'
 
 export const dynamic = 'force-static'
 
 export default function robots(): MetadataRoute.Robots {
-  const SITE_URL = 'https://babynamescout.com'
-
   return {
     rules: {
       userAgent: '*',
@@ -12,5 +11,6 @@ export default function robots(): MetadataRoute.Robots {
       disallow: ['/api/', '/_next/'],
     },
     sitemap: `${SITE_URL}/sitemap.xml`,
+    host: SITE_URL,
   }
 }
