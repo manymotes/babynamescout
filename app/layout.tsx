@@ -4,11 +4,8 @@ import './globals.css'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { Analytics } from '@/components/Analytics'
-import QuickActions from '@/components/QuickActions'
-import ReadingProgress from '@/components/ReadingProgress'
-import BackToTop from '@/components/BackToTop'
+import { DynamicClientComponents } from '@/components/DynamicClientComponents'
 import { siteConfig, SITE_URL } from '@/lib/config'
-import AdsterraAd from '@/components/AdsterraAd'
 
 // WebSite schema for Sitelinks Search Box
 const websiteSchema = {
@@ -106,14 +103,11 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
         <Analytics />
-        <ReadingProgress />
         <Header />
         <main className="flex-1">
           {children}
         </main>
-        <QuickActions variant="sticky" />
-        <AdsterraAd className="max-w-4xl mx-auto px-4 my-8" />
-        <BackToTop />
+        <DynamicClientComponents adClassName="max-w-4xl mx-auto px-4 my-8" />
         <Footer />
       </body>
     </html>
