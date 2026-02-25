@@ -20,6 +20,63 @@ export async function generateStaticParams() {
   return topNames.map(name => ({ slug: name.slug }))
 }
 
+// Custom SEO overrides for high-priority striking distance pages
+// These pages are ranking positions 10-25 and need optimized titles/descriptions
+const customSEO: Record<string, { title?: string; description?: string }> = {
+  'aliana': {
+    title: 'Aliana Name Meaning, Origin & Popularity 2026',
+    description: 'Aliana means "My God has answered" - a beautiful Hebrew girl name. Ranked #385. Discover Aliana\'s origin, popularity trends, nicknames & famous namesakes.'
+  },
+  'elise': {
+    title: 'Elise Name Meaning, Origin & Popularity 2026',
+    description: 'Elise means "Pledged to God" - an elegant French girl name. Ranked #245. Discover Elise\'s origin, pronunciation, nicknames & famous namesakes.'
+  },
+  'ines': {
+    title: 'Ines Name Meaning, Origin & Popularity 2026',
+    description: 'Ines means "Pure, holy" - a lovely Spanish girl name. Ranked #485. Discover Ines\'s origin, pronunciation, popularity trends & famous namesakes.'
+  },
+  'reign': {
+    title: 'Reign Name Meaning - Is Reign a Unisex Name? 2026',
+    description: 'Reign means "Royal rule" - a bold unisex/gender-neutral name. Ranked #345. Learn if Reign is a boy or girl name, its origin & popularity.'
+  },
+  'navy': {
+    title: 'Navy Name Meaning - Is Navy a Unisex Name? 2026',
+    description: 'Navy means "Fleet of ships" - a unique unisex/gender-neutral name. Ranked #485. Learn if Navy is a boy or girl name, its origin & rising popularity.'
+  },
+  'palmer': {
+    title: 'Palmer Name Meaning, Origin & Popularity 2026',
+    description: 'Palmer means "Pilgrim" - a distinctive English name for girls. Ranked #428. Discover Palmer\'s origin, popularity trends & famous namesakes.'
+  },
+  'palmer-unisex': {
+    title: 'Palmer Name Meaning - Is Palmer a Unisex Name? 2026',
+    description: 'Palmer means "Pilgrim" - a versatile unisex English name. Ranked #385. Learn if Palmer is a boy or girl name, its origin & popularity trends.'
+  },
+  'anders': {
+    title: 'Anders Name Meaning, Origin & Popularity 2026',
+    description: 'Anders means "Strong, manly" - a handsome Scandinavian boy name. Ranked #525. Discover Anders\'s origin, pronunciation & famous namesakes.'
+  },
+  'alanna': {
+    title: 'Alanna Name Meaning, Origin & Popularity 2026',
+    description: 'Alanna means "Harmony, peace" - a beautiful Irish girl name. Ranked #428. Discover Alanna\'s origin, pronunciation, nicknames & famous namesakes.'
+  },
+  'dani': {
+    title: 'Dani Name Meaning, Origin & Popularity 2026',
+    description: 'Dani means "God is my judge" - a sweet Hebrew girl name. Ranked #485. Discover Dani\'s origin, if it\'s a nickname, and famous namesakes.'
+  },
+  'poppy': {
+    title: 'Poppy Name Meaning, Origin & Popularity 2026',
+    description: 'Poppy means "Red flower" - a cheerful Latin girl name. Ranked #285. Discover Poppy\'s origin, popularity trends, nicknames & famous namesakes.'
+  },
+  'shane': {
+    title: 'Shane Name Meaning, Origin & Popularity 2026',
+    description: 'Shane means "God is gracious" - a classic Irish boy name. Ranked #298. Discover Shane\'s origin, pronunciation & famous namesakes.'
+  },
+  'noemi': {
+    title: 'Noemi Name Meaning, Origin & Popularity 2026',
+    description: 'Noemi means "Pleasantness" - an elegant Hebrew girl name. Ranked #345. Discover Noemi\'s origin, pronunciation & how it differs from Naomi.'
+  }
+}
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params
   const name = getNameBySlug(slug)
@@ -31,15 +88,45 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const genderLabel = name.gender === 'girl' ? 'Girl' : name.gender === 'boy' ? 'Boy' : 'Unisex'
   const canonicalUrl = `${SITE_URL}/name/${slug}/`
 
+  // Check for custom SEO overrides for high-priority pages
+  const customMeta = customSEO[slug]
+
+  // Optimized title format - front-loads the name, includes key terms, under 60 chars
+  // Format: "[Name] Name Meaning, Origin & Popularity 2026" matches search intent
+  // Falls back to shorter format for longer names to stay under 60 chars
+  let title: string
+  if (customMeta?.title) {
+    title = customMeta.title
+  } else {
+    const primaryTitle = `${name.name} Name Meaning, Origin & Popularity 2026`
+    const shortTitle = `${name.name}: Meaning, Origin & Popularity (2026)`
+    title = primaryTitle.length <= 60 ? primaryTitle : shortTitle
+  }
+
+  // Build optimized meta description (aim for 150-160 chars)
+  // Includes: meaning, origin, gender/unisex status, popularity when available
+  let description: string
+  if (customMeta?.description) {
+    description = customMeta.description
+  } else {
+    const popularityText = name.popularity
+      ? `Ranked #${name.popularity}. `
+      : ''
+    const genderText = name.gender === 'unisex'
+      ? 'gender-neutral'
+      : genderLabel.toLowerCase()
+    description = `${name.name} means "${name.meaning}" - a ${name.origin} ${genderText} name. ${popularityText}Discover origin, popularity trends, nicknames & famous namesakes.`
+  }
+
   return {
-    title: `${name.name} Name Meaning, Origin & Popularity 2026`,
-    description: `What does ${name.name} mean? ${name.name} is a ${name.origin} ${genderLabel.toLowerCase()} name meaning "${name.meaning}". Learn about the name ${name.name}, its history, popularity, and famous namesakes.`,
+    title,
+    description,
     alternates: {
       canonical: canonicalUrl,
     },
     openGraph: {
-      title: `${name.name} - Baby Name Meaning & Origin`,
-      description: `Discover the meaning of ${name.name}: ${name.meaning}`,
+      title: `${name.name} - Baby Name Meaning & Origin 2026`,
+      description: `Discover the meaning of ${name.name}: "${name.meaning}" - ${name.origin} origin`,
       url: canonicalUrl,
       type: 'article',
       siteName: 'BabyNameScout',
@@ -54,8 +141,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${name.name} - Baby Name Meaning & Origin`,
-      description: `Discover the meaning of ${name.name}: ${name.meaning}`,
+      title: `${name.name} - Baby Name Meaning & Origin 2026`,
+      description: `Discover the meaning of ${name.name}: "${name.meaning}" - ${name.origin} origin`,
       images: [`${SITE_URL}/og/name/${slug}.png`],
     }
   }

@@ -93,6 +93,31 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        {/* Resource hints for third-party domains - reduces connection time */}
+        {/* dns-prefetch: resolves DNS early (low cost, good for all resources) */}
+        {/* preconnect: DNS + TCP + TLS handshake (use for critical resources) */}
+
+        {/* Google Analytics & Tag Manager - critical for tracking */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+
+        {/* Google Analytics data endpoint */}
+        <link rel="preconnect" href="https://www.google-analytics.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
+        {/* Google AdSense - defer connection until needed */}
+        <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
+        <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net" />
+        <link rel="dns-prefetch" href="https://tpc.googlesyndication.com" />
+
+        {/* Adsterra ad network */}
+        <link rel="dns-prefetch" href="https://pl28758900.effectivegatecpm.com" />
+
+        {/* Google Fonts (used by next/font but good to have dns-prefetch) */}
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+      </head>
       <body className={`${inter.variable} font-sans min-h-screen flex flex-col`}>
         <script
           type="application/ld+json"
