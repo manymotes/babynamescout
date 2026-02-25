@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { Header } from '@/components/Header'
-import { Footer } from '@/components/Footer'
 import { Analytics } from '@/components/Analytics'
 import { DynamicClientComponents } from '@/components/DynamicClientComponents'
 import { siteConfig, SITE_URL } from '@/lib/config'
@@ -132,8 +131,7 @@ export default function RootLayout({
         <main className="flex-1">
           {children}
         </main>
-        <DynamicClientComponents adClassName="max-w-4xl mx-auto px-4 my-8" />
-        <Footer />
+        <DynamicClientComponents adClassName="max-w-4xl mx-auto px-4 my-8" includeFooter={true} />
       </body>
     </html>
   )
