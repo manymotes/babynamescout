@@ -1,8 +1,11 @@
+import { memo } from 'react'
+
 interface DisclaimerProps {
   className?: string
 }
 
-export function Disclaimer({ className = '' }: DisclaimerProps) {
+// Memoized Disclaimer component for performance
+export const Disclaimer = memo(function Disclaimer({ className = '' }: DisclaimerProps) {
   return (
     <div className={`bg-gray-50 border border-gray-200 rounded-lg p-4 my-6 ${className}`}>
       <div className="flex items-start gap-3">
@@ -32,12 +35,12 @@ export function Disclaimer({ className = '' }: DisclaimerProps) {
       </div>
     </div>
   )
-}
+})
 
-export function FooterDisclaimer() {
+export const FooterDisclaimer = memo(function FooterDisclaimer() {
   return (
     <p className="text-xs text-gray-500">
       Popularity data from Social Security Administration.
     </p>
   )
-}
+})

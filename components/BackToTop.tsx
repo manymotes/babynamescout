@@ -1,8 +1,8 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback, memo } from 'react'
 
-export default function BackToTop() {
+function BackToTopComponent() {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
@@ -14,9 +14,10 @@ export default function BackToTop() {
     return () => window.removeEventListener('scroll', toggleVisibility)
   }, [])
 
-  const scrollToTop = () => {
+  // Memoized scroll handler to prevent recreation on each render
+  const scrollToTop = useCallback(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
+  }, [])
 
   if (!isVisible) return null
 
@@ -32,3 +33,6 @@ export default function BackToTop() {
     </button>
   )
 }
+
+// Export memoized component
+export default memo(BackToTopComponent)

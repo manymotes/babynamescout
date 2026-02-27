@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { memo, useMemo } from 'react'
 
 interface ExploreItem {
   title: string
@@ -10,7 +11,8 @@ interface ExploreItem {
   color: string
 }
 
-const defaultItems: ExploreItem[] = [
+// Define default items outside component to prevent recreation
+const DEFAULT_ITEMS: ExploreItem[] = [
   {
     title: "Girl Names",
     description: "Browse beautiful girl names",
@@ -47,21 +49,23 @@ interface ExploreMoreProps {
   variant?: 'grid' | 'row'
 }
 
-export default function ExploreMore({
+function ExploreMoreComponent({
   title = "Explore More Names",
-  items = defaultItems,
+  items = DEFAULT_ITEMS,
   variant = 'grid'
 }: ExploreMoreProps) {
+  // Memoize items to prevent unnecessary re-renders
+  const displayItems = useMemo(() => items, [items])
   if (variant === 'row') {
     return (
       <div className="py-6">
         <h3 className="text-lg font-semibold text-gray-900 mb-4">{title}</h3>
         <div className="flex overflow-x-auto gap-3 pb-2 -mx-4 px-4 scrollbar-hide">
-          {items.map((item, index) => (
+          {displayItems.map((item, index) => (
             <Link
               key={index}
               href={item.href}
-              className={`flex-shrink-0 w-44 p-4 rounded-xl bg-gradient-to-br ${item.color} border hover:shadow-md transition-all group`}
+              className={`flex-shrink-0 w-44 p-4 rounded-xl bg-gradient-to-br ${item.color} border hover:shadow-md transition-all group category-card`}
             >
               <span className="text-2xl mb-2 block">{item.emoji}</span>
               <h4 className="font-medium text-gray-900 text-sm group-hover:text-primary-600 transition-colors">{item.title}</h4>
@@ -82,11 +86,11 @@ export default function ExploreMore({
         </Link>
       </div>
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {items.map((item, index) => (
+        {displayItems.map((item, index) => (
           <Link
             key={index}
             href={item.href}
-            className={`p-4 rounded-lg bg-gradient-to-br ${item.color} border hover:shadow-md transition-all group`}
+            className={`p-4 rounded-lg bg-gradient-to-br ${item.color} border hover:shadow-md transition-all group category-card`}
           >
             <span className="text-2xl mb-2 block">{item.emoji}</span>
             <h4 className="font-medium text-gray-900 text-sm group-hover:text-primary-600 transition-colors">{item.title}</h4>
@@ -97,3 +101,6 @@ export default function ExploreMore({
     </div>
   )
 }
+
+// Export memoized component
+export default memo(ExploreMoreComponent)

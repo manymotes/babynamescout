@@ -1,18 +1,21 @@
 'use client'
 
 import Link from 'next/link'
+import { memo, useMemo } from 'react'
 
 interface QuickActionsProps {
   variant?: 'sticky' | 'inline'
 }
 
-export default function QuickActions({ variant = 'inline' }: QuickActionsProps) {
-  const actions = [
+// Memoized QuickActions to prevent re-renders
+function QuickActionsComponent({ variant = 'inline' }: QuickActionsProps) {
+  // Memoize actions array to prevent recreation on each render
+  const actions = useMemo(() => [
     { emoji: '👧', label: 'Girl Names', href: '/names/girl/' },
     { emoji: '👦', label: 'Boy Names', href: '/names/boy/' },
     { emoji: '✨', label: 'Quiz', href: '/quiz/naming-style/' },
     { emoji: '🌍', label: 'Origins', href: '/origins/' },
-  ]
+  ], [])
 
   if (variant === 'sticky') {
     return (
@@ -50,3 +53,6 @@ export default function QuickActions({ variant = 'inline' }: QuickActionsProps) 
     </div>
   )
 }
+
+// Export memoized component
+export default memo(QuickActionsComponent)

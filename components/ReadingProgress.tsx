@@ -1,8 +1,8 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, memo } from 'react'
 
-export default function ReadingProgress() {
+function ReadingProgressComponent() {
   const [progress, setProgress] = useState(0)
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export default function ReadingProgress() {
   }, [])
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 h-1 bg-gray-200">
+    <div className="fixed top-0 left-0 right-0 z-50 h-1 bg-gray-200 reading-progress">
       <div
         className="h-full bg-gradient-to-r from-primary-500 to-secondary-500 transition-all duration-150 ease-out"
         style={{ width: `${progress}%` }}
@@ -28,3 +28,6 @@ export default function ReadingProgress() {
     </div>
   )
 }
+
+// Export memoized component
+export default memo(ReadingProgressComponent)

@@ -1,11 +1,44 @@
 'use client'
 
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useCallback, memo } from 'react'
 
-export function Header() {
+// Memoized navigation links to prevent re-renders
+const NavLinks = memo(function NavLinks() {
+  return (
+    <>
+      <Link href="/names/girl/" className="text-gray-600 hover:text-primary-600 font-medium">
+        Girl Names
+      </Link>
+      <Link href="/names/boy/" className="text-gray-600 hover:text-secondary-600 font-medium">
+        Boy Names
+      </Link>
+      <Link href="/compare/" className="text-gray-600 hover:text-purple-600 font-medium">
+        Compare
+      </Link>
+      <Link href="/origins/" className="text-gray-600 hover:text-gray-900 font-medium">
+        By Origin
+      </Link>
+    </>
+  )
+})
+
+function HeaderComponent() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [moreMenuOpen, setMoreMenuOpen] = useState(false)
+
+  // Memoized toggle handlers to prevent unnecessary re-renders
+  const toggleMobileMenu = useCallback(() => {
+    setMobileMenuOpen(prev => !prev)
+  }, [])
+
+  const toggleMoreMenu = useCallback(() => {
+    setMoreMenuOpen(prev => !prev)
+  }, [])
+
+  const closeMoreMenu = useCallback(() => {
+    setTimeout(() => setMoreMenuOpen(false), 200)
+  }, [])
 
   return (
     <header className="bg-white border-b border-gray-100">
@@ -18,22 +51,11 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6">
-            <Link href="/names/girl/" className="text-gray-600 hover:text-primary-600 font-medium">
-              Girl Names
-            </Link>
-            <Link href="/names/boy/" className="text-gray-600 hover:text-secondary-600 font-medium">
-              Boy Names
-            </Link>
-            <Link href="/compare/" className="text-gray-600 hover:text-purple-600 font-medium">
-              Compare
-            </Link>
-            <Link href="/origins/" className="text-gray-600 hover:text-gray-900 font-medium">
-              By Origin
-            </Link>
+            <NavLinks />
             <div className="relative">
               <button
-                onClick={() => setMoreMenuOpen(!moreMenuOpen)}
-                onBlur={() => setTimeout(() => setMoreMenuOpen(false), 200)}
+                onClick={toggleMoreMenu}
+                onBlur={closeMoreMenu}
                 className="text-gray-600 hover:text-gray-900 font-medium flex items-center gap-1"
               >
                 Categories
@@ -85,7 +107,7 @@ export function Header() {
           {/* Mobile menu button */}
           <button
             className="md:hidden p-2"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            onClick={toggleMobileMenu}
             aria-label="Toggle menu"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -157,3 +179,6 @@ export function Header() {
     </header>
   )
 }
+
+// Export memoized Header component to prevent unnecessary re-renders
+export const Header = memo(HeaderComponent)

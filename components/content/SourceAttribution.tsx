@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { memo } from 'react'
 
 interface SourceAttributionProps {
   sourceName?: string
@@ -8,7 +9,8 @@ interface SourceAttributionProps {
   showMethodology?: boolean
 }
 
-export function SourceAttribution({
+// Memoized SourceAttribution for performance
+export const SourceAttribution = memo(function SourceAttribution({
   sourceName = 'Social Security Administration',
   sourceUrl = 'https://www.ssa.gov/oact/babynames/',
   sourceDescription = 'Official U.S. government baby name popularity data',
@@ -69,9 +71,9 @@ export function SourceAttribution({
       </div>
     </div>
   )
-}
+})
 
-export function SourceBadge({
+export const SourceBadge = memo(function SourceBadge({
   sourceName = 'SSA Baby Names',
   sourceUrl = 'https://www.ssa.gov/oact/babynames/',
 }: {
@@ -101,4 +103,4 @@ export function SourceBadge({
       Source: {sourceName}
     </a>
   )
-}
+})

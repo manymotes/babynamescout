@@ -1,6 +1,8 @@
 import Link from 'next/link'
+import { memo } from 'react'
 
-export function Footer() {
+// Memoized Footer to prevent re-renders since content is static
+export const Footer = memo(function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
@@ -182,4 +184,4 @@ export function Footer() {
       </div>
     </footer>
   )
-}
+})

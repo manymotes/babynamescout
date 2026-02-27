@@ -23,6 +23,108 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ========================= */
+/* CLS Prevention Utilities  */
+/* ========================= */
+
+/* Min-height utilities for dynamic content containers */
+.min-h-hero {
+  min-height: 400px;
+}
+
+@media (min-width: 768px) {
+  .min-h-hero {
+    min-height: 500px;
+  }
+}
+
+/* Header placeholder to prevent CLS */
+header {
+  min-height: 73px;
+}
+
+/* Footer placeholder to prevent CLS during lazy load */
+footer {
+  min-height: 400px;
+}
+
+@media (min-width: 768px) {
+  footer {
+    min-height: 320px;
+  }
+}
+
+/* Name card grid consistent sizing */
+.name-card,
+[class*="NameCard"] {
+  min-height: 120px;
+}
+
+/* Ad container placeholders to prevent CLS */
+.adsterra-container {
+  min-height: 100px;
+}
+
+/* Category/link card grid items */
+.category-card {
+  min-height: 100px;
+}
+
+/* Quiz section placeholder */
+.quiz-cta {
+  min-height: 140px;
+}
+
+@media (min-width: 768px) {
+  .quiz-cta {
+    min-height: 100px;
+  }
+}
+
+/* Aspect ratio utilities for consistent layouts */
+.aspect-card {
+  aspect-ratio: 3 / 2;
+}
+
+.aspect-hero {
+  aspect-ratio: 16 / 9;
+}
+
+/* Skeleton loader base styles */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgb(243 244 246) 0%,
+    rgb(229 231 235) 50%,
+    rgb(243 244 246) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Content loading states */
+.content-loading {
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Reading progress bar fixed height */
+.reading-progress {
+  height: 4px;
+  min-height: 4px;
+}
+
 /* Better focus states */
 *:focus-visible {
   @apply outline-none ring-2 ring-pink-400 ring-offset-2;

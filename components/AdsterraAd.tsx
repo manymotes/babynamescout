@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, memo } from 'react'
 
 interface AdsterraAdProps {
   className?: string
@@ -9,7 +9,7 @@ interface AdsterraAdProps {
 const AD_HASH = 'f8c1aa75cc40e9a46c9ca67503f555ac'
 const SCRIPT_URL = `https://pl28758900.effectivegatecpm.com/${AD_HASH}/invoke.js`
 
-export default function AdsterraAd({ className = '' }: AdsterraAdProps) {
+function AdsterraAdComponent({ className = '' }: AdsterraAdProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const scriptLoaded = useRef(false)
 
@@ -41,3 +41,6 @@ export default function AdsterraAd({ className = '' }: AdsterraAdProps) {
     </div>
   )
 }
+
+// Export memoized component to prevent re-renders
+export default memo(AdsterraAdComponent)

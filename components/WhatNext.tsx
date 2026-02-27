@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { memo, useMemo } from 'react'
 
 interface Suggestion {
   title: string
@@ -17,7 +18,7 @@ interface WhatNextProps {
   variant?: 'default' | 'compact' | 'highlight'
 }
 
-export default function WhatNext({
+function WhatNextComponent({
   title = "What's Next?",
   description = "Continue exploring names with these tools",
   suggestions,
@@ -104,3 +105,6 @@ export default function WhatNext({
     </div>
   )
 }
+
+// Export memoized component to prevent unnecessary re-renders
+export default memo(WhatNextComponent)

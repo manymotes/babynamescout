@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { memo } from 'react'
 import type { BabyName } from '@/types/name'
 
 interface NameCardProps {
@@ -6,7 +7,8 @@ interface NameCardProps {
   showGender?: boolean
 }
 
-export function NameCard({ name, showGender = true }: NameCardProps) {
+// Memoized NameCard to prevent re-renders when parent updates
+const NameCardComponent = memo(function NameCard({ name, showGender = true }: NameCardProps) {
   const genderColor = name.gender === 'girl'
     ? 'border-primary-200 hover:border-primary-400'
     : name.gender === 'boy'
@@ -45,14 +47,18 @@ export function NameCard({ name, showGender = true }: NameCardProps) {
       </div>
     </Link>
   )
-}
+})
+
+// Export with proper naming for better debugging
+export const NameCard = NameCardComponent
 
 interface NameGridProps {
   names: BabyName[]
   showGender?: boolean
 }
 
-export function NameGrid({ names, showGender = true }: NameGridProps) {
+// Memoized NameGrid to prevent re-renders
+export const NameGrid = memo(function NameGrid({ names, showGender = true }: NameGridProps) {
   return (
     <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
       {names.map(name => (
@@ -60,4 +66,4 @@ export function NameGrid({ names, showGender = true }: NameGridProps) {
       ))}
     </div>
   )
-}
+})
